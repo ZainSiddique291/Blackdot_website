@@ -15,13 +15,13 @@ export default function FeaturedProducts({ onNavigateShop }) {
       <div className="max-w-site mx-auto px-5 sm:px-8 lg:px-12">
         {/* Editorial Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold-tint border border-brand-gold/40 text-brand-gold-dark text-xs font-semibold uppercase tracking-[0.2em] mb-4">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold-tint border border-brand-gold/40 text-brand-gold-dark text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-brand-gold-dark animate-pulse-slow" />
             <span>Curated Formulations</span>
           </div>
           
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-brand-black tracking-tight">
-            SIGNATURE <span className="text-brand-gold-dark">COLLECTION</span>
+            SIGNATURE <span className="text-brand-gold-dark italic">COLLECTION</span>
           </h2>
 
           <p className="mt-4 text-sm sm:text-base text-brand-text max-w-xl mx-auto leading-relaxed">
@@ -37,10 +37,10 @@ export default function FeaturedProducts({ onNavigateShop }) {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium tracking-wider uppercase transition-all duration-200 ${
+                className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium tracking-wider uppercase transition-all duration-300 transform active:scale-95 cursor-pointer ${
                   isActive
-                    ? 'bg-brand-black text-brand-gold shadow-md border border-brand-gold/40'
-                    : 'bg-white text-brand-muted hover:text-brand-black border border-brand-border hover:border-brand-gold/40'
+                    ? 'bg-brand-black text-brand-gold shadow-md border border-brand-gold/40 scale-102'
+                    : 'bg-white text-brand-muted hover:text-brand-black border border-brand-border hover:border-brand-gold/40 hover:-translate-y-0.5'
                 }`}
               >
                 <span>{cat.name}</span>

@@ -50,7 +50,7 @@ export default function CategorySection({ onSelectCategory }) {
             <div
               key={cat.id}
               onClick={() => onSelectCategory(cat.id)}
-              className="group relative h-[380px] sm:h-[420px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500 border border-brand-border"
+              className="group relative h-[380px] sm:h-[420px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 border border-brand-border hover:border-brand-gold/60 hover:-translate-y-1.5"
             >
               {/* Background Product Image */}
               <img
@@ -67,10 +67,10 @@ export default function CategorySection({ onSelectCategory }) {
               <div className="absolute inset-0 p-7 flex flex-col justify-between z-10">
                 {/* Top Badge */}
                 <div className="flex justify-between items-center">
-                  <span className="px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-brand-gold bg-brand-black/80 rounded-full border border-brand-gold/30 backdrop-blur-md">
+                  <span className="px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-brand-gold bg-brand-black/80 rounded-full border border-brand-gold/30 backdrop-blur-md shadow-xs">
                     {cat.itemsCount}
                   </span>
-                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-brand-gold group-hover:text-brand-black transition-colors duration-300">
+                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-brand-gold group-hover:text-brand-black group-hover:scale-110 transition-all duration-300 shadow-sm">
                     <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </div>

@@ -31,28 +31,32 @@ const BENEFITS = [
 export default function TrustBenefits() {
   return (
     <section className="bg-brand-black text-white py-14 border-y border-white/10 relative overflow-hidden">
-      {/* Subtle gold gradient line at top */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-brand-gold/40 to-transparent" />
+      {/* Subtle gold gradient line at top with ambient glow */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-brand-gold/60 to-transparent" />
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-32 bg-brand-gold/5 blur-3xl pointer-events-none rounded-full" />
 
-      <div className="max-w-site mx-auto px-5 sm:px-8 lg:px-12">
+      <div className="max-w-site mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
           {BENEFITS.map((item, idx) => {
             const Icon = item.icon;
             return (
               <div
                 key={idx}
-                className="group relative p-6 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 hover:border-brand-gold/30 transition-all duration-300 hover:-translate-y-1"
+                className="group relative p-6 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 hover:border-brand-gold/40 hover:shadow-[0_8px_30px_rgba(201,154,59,0.12)] transition-all duration-300 hover:-translate-y-1 overflow-hidden"
               >
+                {/* Subtle gold top border glow on hover */}
+                <div className="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-brand-gold/0 group-hover:via-brand-gold/60 to-transparent transition-all duration-500 pointer-events-none" />
+
                 {/* Gold tag */}
-                <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-brand-gold inline-block mb-3">
+                <span className="text-[10px] uppercase tracking-[0.2em] font-semibold text-brand-gold inline-block mb-3 transition-transform duration-300 group-hover:translate-x-0.5">
                   {item.tag}
                 </span>
 
                 <div className="flex items-center gap-3.5 mb-3">
-                  <div className="w-10 h-10 rounded-lg bg-brand-gold/10 border border-brand-gold/25 flex items-center justify-center text-brand-gold transition-transform duration-300 group-hover:scale-110">
+                  <div className="w-10 h-10 rounded-lg bg-brand-gold/10 border border-brand-gold/25 flex items-center justify-center text-brand-gold transition-all duration-300 group-hover:scale-110 group-hover:bg-brand-gold/20 group-hover:rotate-2 shadow-xs">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-heading text-lg font-medium text-white tracking-wide">
+                  <h3 className="font-heading text-lg font-medium text-white tracking-wide group-hover:text-brand-gold-light transition-colors duration-200">
                     {item.title}
                   </h3>
                 </div>

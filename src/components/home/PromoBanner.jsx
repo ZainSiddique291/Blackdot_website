@@ -9,9 +9,9 @@ export default function PromoBanner({ onNavigateShop }) {
 
   return (
     <section className="bg-gradient-to-r from-brand-black via-brand-charcoal to-brand-black text-white py-16 sm:py-20 border-b border-white/10 relative overflow-hidden">
-      {/* Decorative Gold Rings */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-brand-gold/15 pointer-events-none" />
-      <div className="absolute right-12 top-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-brand-gold/10 pointer-events-none" />
+      {/* Decorative Gold Rings with subtle ambient breathing motion */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-brand-gold/15 pointer-events-none animate-pulse-slow" />
+      <div className="absolute right-12 top-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-brand-gold/10 pointer-events-none animate-float-gentle" />
 
       <div className="max-w-site mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -19,12 +19,12 @@ export default function PromoBanner({ onNavigateShop }) {
           {/* Left Text */}
           <div className="lg:col-span-7">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/15 text-brand-gold border border-brand-gold/30 text-xs font-semibold uppercase tracking-[0.2em] mb-4">
-              <Gift className="w-3.5 h-3.5" />
+              <Gift className="w-3.5 h-3.5 text-brand-gold-light" />
               <span>LIMITED EDITION OFFER</span>
             </div>
 
             <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-tight">
-              The Complete Hair <span className="text-brand-gold">Transformation Ritual</span>
+              The Complete Hair <span className="text-brand-gold italic">Transformation Ritual</span>
             </h2>
 
             <p className="mt-4 text-zinc-300 text-sm sm:text-base max-w-xl leading-relaxed">
@@ -38,7 +38,7 @@ export default function PromoBanner({ onNavigateShop }) {
               <span className="text-base text-zinc-400 line-through">
                 PKR 6,550
               </span>
-              <span className="px-2.5 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-brand-gold text-brand-black">
+              <span className="px-2.5 py-0.5 rounded text-xs font-bold uppercase tracking-wider bg-brand-gold text-brand-black shadow-xs">
                 Save PKR 1,051
               </span>
             </div>
@@ -46,10 +46,10 @@ export default function PromoBanner({ onNavigateShop }) {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <button
                 onClick={() => addToCart(bundleProduct, 1, 'Full Ritual Set')}
-                className="inline-flex items-center justify-center gap-3 bg-brand-gold hover:bg-brand-gold-dark text-brand-black font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase px-8 py-4 rounded-sm shadow-lg transition-all duration-300 hover:shadow-gold-glow"
+                className="group relative overflow-hidden inline-flex items-center justify-center gap-3 bg-brand-gold hover:bg-brand-gold-dark text-brand-black font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase px-8 py-4 rounded-sm shadow-lg transition-all duration-300 hover:shadow-gold-glow hover:-translate-y-0.5 active:translate-y-0"
               >
                 <span>CLAIM LUXURY BUNDLE</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
 
               <button

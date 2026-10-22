@@ -29,19 +29,19 @@ export default function CustomerReviews() {
           {REVIEWS.map((rev) => (
             <div
               key={rev.id}
-              className="bg-white p-6 rounded-2xl border border-brand-border/80 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+              className="bg-white p-6 rounded-2xl border border-brand-border/80 hover:border-brand-gold/40 shadow-sm hover:shadow-luxury hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
                 {/* Rating stars & verified badge */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center text-amber-500">
                     {[...Array(rev.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current" />
+                      <Star key={i} className="w-4 h-4 fill-current transition-transform duration-200 group-hover:scale-105" />
                     ))}
                   </div>
                   {rev.verified && (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                      <CheckCircle className="w-3 h-3" />
+                    <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 shadow-xs">
+                      <CheckCircle className="w-3 h-3 text-emerald-600" />
                       Verified
                     </span>
                   )}

@@ -6,8 +6,8 @@ export default function BrandStory({ onNavigateAbout }) {
   return (
     <section className="bg-brand-black text-white py-24 border-b border-white/10 relative overflow-hidden">
       {/* Decorative Gold Ambient Glows */}
-      <div className="absolute -top-24 -left-24 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow" />
+      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none animate-pulse-slow" />
 
       <div className="max-w-site mx-auto px-5 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -22,8 +22,8 @@ export default function BrandStory({ onNavigateAbout }) {
                 loading="lazy"
               />
               
-              {/* Gold Crest floating stamp */}
-              <div className="absolute bottom-6 right-6 p-4 rounded-xl glass-dark border border-brand-gold/40 shadow-2xl flex items-center gap-3">
+              {/* Gold Crest floating stamp with gentle animation */}
+              <div className="absolute bottom-6 right-6 p-4 rounded-xl glass-dark border border-brand-gold/40 shadow-2xl flex items-center gap-3 animate-float-gentle backdrop-blur-md">
                 <Logo variant="dark" size="sm" showTagline={false} />
                 <div className="border-l border-white/20 pl-3">
                   <p className="text-[10px] tracking-widest uppercase text-brand-gold font-bold">ESTABLISHED</p>

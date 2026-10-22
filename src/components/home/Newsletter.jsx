@@ -54,17 +54,17 @@ export default function Newsletter() {
                     if (status === 'error') setStatus('idle');
                   }}
                   placeholder="Enter your email address"
-                  className="w-full pl-10 pr-4 py-3.5 bg-brand-black border border-white/20 focus:border-brand-gold rounded-sm text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors"
+                  className="w-full pl-10 pr-4 py-3.5 bg-brand-black border border-white/20 focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/25 rounded-sm text-sm text-white placeholder-zinc-500 focus:outline-none transition-all duration-300"
                   aria-label="Email Address"
                 />
               </div>
 
               <button
                 type="submit"
-                className="inline-flex items-center justify-center gap-2 bg-brand-gold hover:bg-brand-gold-dark text-brand-black font-semibold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-sm transition-colors shadow-md"
+                className="inline-flex items-center justify-center gap-2 bg-brand-gold hover:bg-brand-gold-dark text-brand-black font-semibold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-sm transition-all duration-300 shadow-md hover:shadow-gold-glow hover:-translate-y-0.5 active:translate-y-0 group cursor-pointer"
               >
                 <span>Subscribe</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
             </div>
 

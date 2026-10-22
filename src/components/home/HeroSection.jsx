@@ -74,11 +74,19 @@ export default function HeroSection({ onShopClick }) {
         <img
           src="/images/blackdot_hero_bg_empty.jpg"
           alt="Black Dot Luxury Haircare Architectural Stage"
-          className="w-full h-full object-cover object-right lg:object-center"
+          className="w-full h-full object-cover object-[72%_center] sm:object-[68%_center] lg:object-center"
           fetchPriority="high"
         />
-        {/* Soft gradient feathering on left to guarantee 100% typography contrast on any screen */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#F7F5F0]/98 via-[#F7F5F0]/80 lg:via-[#F7F5F0]/60 to-[#F7F5F0]/30 lg:to-transparent w-full lg:w-[58%]" />
+
+        {/* Ambient Gold Radial Glow */}
+        <div className="absolute top-10 left-4 sm:left-12 w-80 h-80 bg-[#E2C27A]/18 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Desktop Gradient: Horizontal feathering on left to guarantee 100% typography contrast */}
+        <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-[#F7F5F0] via-[#F7F5F0]/85 via-45% to-transparent w-[58%]" />
+
+        {/* Mobile & Tablet Gradient: Vertical wash to ensure pristine contrast over top content while keeping bottom stage visible */}
+        <div className="lg:hidden absolute inset-0 bg-gradient-to-b from-[#F7F5F0] via-[#F7F5F0]/94 via-55% to-[#F7F5F0]/45" />
+        <div className="lg:hidden absolute inset-0 bg-gradient-to-r from-[#F7F5F0]/95 via-[#F7F5F0]/80 to-transparent" />
       </div>
 
       {/* Main Responsive Grid Container */}
@@ -92,12 +100,12 @@ export default function HeroSection({ onShopClick }) {
             animate="visible"
             className="lg:col-span-7 xl:col-span-6 z-20 flex flex-col justify-center my-auto pt-2 lg:pt-0"
           >
-            {/* 1. Eyebrow Tagline */}
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-1 sm:mb-2">
-              <span className="text-[10px] sm:text-xs lg:text-[11.5px] font-semibold uppercase tracking-[0.2em] text-[#9E7426]">
+            {/* 1. Eyebrow Tagline Badge */}
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-2 sm:mb-2.5">
+              <span className="inline-block px-3 py-1 rounded-full bg-white/85 border border-[#D8C7A5] text-[#8C6219] text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] shadow-xs backdrop-blur-xs">
                 QUICK TO YOU. STRESS-FREE DELIVERY.
               </span>
-              <span className="h-[1px] w-8 sm:w-12 bg-[#9E7426]/50 inline-block" />
+              <span className="h-[1px] w-6 sm:w-10 bg-[#B8860B]/40 hidden sm:inline-block" />
             </motion.div>
 
             {/* 2. Main Editorial Headline */}
@@ -106,7 +114,7 @@ export default function HeroSection({ onShopClick }) {
               className="font-heading text-2xl sm:text-3xl lg:text-[34px] xl:text-[42px] leading-[1.08] text-[#0B0B0B] tracking-tight"
             >
               AMAZING{' '}
-              <span style={{ color: '#C99A3B' }} className="font-serif italic font-medium">
+              <span className="font-serif italic font-medium bg-gradient-to-r from-[#B8860B] via-[#C99A3B] to-[#9E7426] bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(201,154,59,0.15)]">
                 BLACK DOT
               </span>
               <br />
@@ -118,77 +126,94 @@ export default function HeroSection({ onShopClick }) {
             {/* 3. Description */}
             <motion.p
               variants={itemVariants}
-              className="mt-2 sm:mt-2.5 text-xs sm:text-[13px] lg:text-[13.5px] leading-snug text-[#444444] max-w-lg font-normal"
+              className="mt-2 sm:mt-2.5 text-xs sm:text-[13px] lg:text-[13.5px] leading-relaxed text-[#2B2927] max-w-lg font-normal"
             >
               Black Dot represents mystery, elegance, and minimal power. Inspired by monochrome fashion and modern culture, the brand was built to create pieces that feel bold, refined, and unforgettable.
             </motion.p>
 
             {/* 4. Slogan */}
-            <motion.p
+            <motion.div
               variants={itemVariants}
-              className="mt-1.5 sm:mt-2 text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-[#9E7426]"
+              className="mt-2 sm:mt-2.5 flex items-center gap-2"
             >
-              ONE DOT. ONE IDENTITY. INFINITE STYLE.
-            </motion.p>
+              <span className="h-[1px] w-5 sm:w-8 bg-[#B8860B]/60 inline-block" />
+              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.22em] text-[#8C6219]">
+                ONE DOT. ONE IDENTITY. INFINITE STYLE.
+              </span>
+            </motion.div>
 
-            {/* 5. Primary Gold CTA Button */}
-            <motion.div variants={itemVariants} className="mt-3 sm:mt-4">
+            {/* 5. Primary Gold CTA Button & Secondary Link */}
+            <motion.div variants={itemVariants} className="mt-3.5 sm:mt-4 flex items-center gap-3">
               <button
                 onClick={() => addToCart(mainProduct, 1, '500ml')}
-                className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#D4A346] via-[#C99A3B] to-[#B3832B] hover:brightness-105 text-[#0B0B0B] font-bold text-xs tracking-[0.16em] uppercase px-7 py-2.5 sm:py-3 rounded-xs shadow-md transition-all duration-300 hover:shadow-gold-glow hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#D4A346] via-[#C99A3B] to-[#B3832B] hover:brightness-105 text-[#0B0B0B] font-bold text-xs tracking-[0.16em] uppercase px-7 py-2.5 sm:py-3 rounded-xs shadow-[0_6px_20px_rgba(201,154,59,0.3)] hover:shadow-gold-glow transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
                 <span>SHOP NOW</span>
                 <span className="text-sm transition-transform duration-300 group-hover:translate-x-1">→</span>
+              </button>
+              <button
+                onClick={onShopClick}
+                className="inline-flex items-center justify-center text-xs font-semibold tracking-[0.16em] uppercase text-[#66625D] hover:text-[#0B0B0B] px-3 py-2.5 transition-colors cursor-pointer"
+              >
+                <span>Explore Rituals</span>
               </button>
             </motion.div>
 
             {/* 6. 3 Compact Trust Indicators */}
             <motion.div
               variants={itemVariants}
-              className="mt-3.5 sm:mt-5 pt-2.5 sm:pt-3 border-t border-[#E5E1D8] grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3"
+              className="mt-3.5 sm:mt-4 pt-3 border-t border-[#E5E1D8]"
             >
-              {/* Indicator 1 */}
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#F3E8D0] border border-[#C99A3B]/40 flex items-center justify-center flex-shrink-0 text-[#9E7426] shadow-xs">
-                  <Truck className="w-3.5 h-3.5" />
+              <div className="grid grid-cols-3 gap-1.5 sm:gap-3 p-2 sm:p-2.5 rounded-xl bg-white/80 backdrop-blur-md border border-[#E5E1D8] shadow-xs">
+                {/* Indicator 1 */}
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-[#F5EAD4] border border-[#C99A3B]/40 flex items-center justify-center flex-shrink-0 text-[#8C6219] shadow-xs">
+                    <Truck className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  </div>
+                  <div className="min-w-0">
+                    <h4 className="text-[9.5px] sm:text-[11px] font-bold uppercase tracking-wider text-[#0B0B0B] leading-tight">
+                      <span className="hidden sm:inline">FAST &amp; RELIABLE</span>
+                      <span className="sm:hidden">FAST COURIER</span>
+                    </h4>
+                    <p className="text-[8.5px] sm:text-[10px] text-[#55524D] mt-0.5 leading-tight truncate">
+                      <span className="hidden sm:inline">Delivery Across Pakistan</span>
+                      <span className="sm:hidden">All Pakistan</span>
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#0B0B0B] leading-tight">
-                    FAST &amp; RELIABLE
-                  </h4>
-                  <p className="text-[9px] sm:text-[10px] text-[#777777] mt-0.5 leading-tight">
-                    Delivery Across Pakistan
-                  </p>
-                </div>
-              </div>
 
-              {/* Indicator 2 */}
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#F3E8D0] border border-[#C99A3B]/40 flex items-center justify-center flex-shrink-0 text-[#9E7426] shadow-xs">
-                  <ShieldCheck className="w-3.5 h-3.5" />
+                {/* Indicator 2 */}
+                <div className="flex items-center gap-1.5 sm:gap-2 border-x border-[#E5E1D8] px-1 sm:px-2">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-[#F5EAD4] border border-[#C99A3B]/40 flex items-center justify-center flex-shrink-0 text-[#8C6219] shadow-xs">
+                    <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  </div>
+                  <div className="min-w-0">
+                    <h4 className="text-[9.5px] sm:text-[11px] font-bold uppercase tracking-wider text-[#0B0B0B] leading-tight">
+                      <span className="hidden sm:inline">PREMIUM QUALITY</span>
+                      <span className="sm:hidden">100% PURE</span>
+                    </h4>
+                    <p className="text-[8.5px] sm:text-[10px] text-[#55524D] mt-0.5 leading-tight truncate">
+                      <span className="hidden sm:inline">Trusted by Thousands</span>
+                      <span className="sm:hidden">Authentic Formula</span>
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#0B0B0B] leading-tight">
-                    PREMIUM QUALITY
-                  </h4>
-                  <p className="text-[9px] sm:text-[10px] text-[#777777] mt-0.5 leading-tight">
-                    Trusted by Thousands
-                  </p>
-                </div>
-              </div>
 
-              {/* Indicator 3 */}
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#F3E8D0] border border-[#C99A3B]/40 flex items-center justify-center flex-shrink-0 text-[#9E7426] shadow-xs">
-                  <Leaf className="w-3.5 h-3.5" />
-                </div>
-                <div>
-                  <h4 className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#0B0B0B] leading-tight">
-                    NATURAL CARE
-                  </h4>
-                  <p className="text-[9px] sm:text-[10px] text-[#777777] mt-0.5 leading-tight">
-                    For Healthy Hair
-                  </p>
+                {/* Indicator 3 */}
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-[#F5EAD4] border border-[#C99A3B]/40 flex items-center justify-center flex-shrink-0 text-[#8C6219] shadow-xs">
+                    <Leaf className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  </div>
+                  <div className="min-w-0">
+                    <h4 className="text-[9.5px] sm:text-[11px] font-bold uppercase tracking-wider text-[#0B0B0B] leading-tight">
+                      <span className="hidden sm:inline">NATURAL CARE</span>
+                      <span className="sm:hidden">NATURAL CARE</span>
+                    </h4>
+                    <p className="text-[8.5px] sm:text-[10px] text-[#55524D] mt-0.5 leading-tight truncate">
+                      <span className="hidden sm:inline">For Healthy Hair</span>
+                      <span className="sm:hidden">Healthy Hair</span>
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -274,7 +299,7 @@ export default function HeroSection({ onShopClick }) {
                   <motion.img
                     src="/images/blackdot_luxury_bottles_3d.png"
                     alt="Black Dot Luxury Haircare Shampoo Bottles"
-                    className="relative z-10 w-auto h-[48vh] sm:h-[54vh] max-h-[340px] sm:max-h-[390px] lg:max-h-[430px] xl:max-h-[480px] object-contain drop-shadow-[0_12px_28px_rgba(0,0,0,0.35)] select-none pointer-events-none"
+                    className="relative z-10 w-auto h-[36vh] sm:h-[44vh] lg:h-[48vh] xl:h-[54vh] max-h-[290px] sm:max-h-[360px] lg:max-h-[430px] xl:max-h-[480px] object-contain drop-shadow-[0_16px_36px_rgba(0,0,0,0.35)] select-none pointer-events-none"
                     draggable={false}
                     fetchPriority="high"
                   />
