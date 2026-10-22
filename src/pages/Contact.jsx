@@ -116,7 +116,7 @@ export default function Contact({ onNavigateHome }) {
               </div>
             </div>
 
-            {/* Dispatch Hubs */}
+            {/* Dispatch Hub */}
             <div className="p-6 rounded-2xl bg-white border border-brand-border shadow-sm">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-xl bg-brand-gold-tint text-brand-gold-dark flex items-center justify-center flex-shrink-0">
@@ -124,14 +124,14 @@ export default function Contact({ onNavigateHome }) {
                 </div>
                 <div>
                   <span className="text-[10px] uppercase tracking-widest text-brand-muted font-bold block mb-1">
-                    DISTRIBUTION HUBS
+                    DISPATCH HUB
                   </span>
                   <h3 className="font-heading text-lg font-semibold text-brand-black">
-                    Pakistan Fulfillment Hubs
+                    Central Dispatch Center
                   </h3>
                   <p className="text-xs text-brand-text mt-1 leading-relaxed">
-                    Main Logistic Center: Gulberg III, Lahore, Pakistan.<br />
-                    Coastal Express Depot: Clifton, Karachi, Pakistan.
+                    Main Dispatch Center: Sargodha, Pakistan.<br />
+                    Nationwide express delivery to all cities and regions across Pakistan.
                   </p>
                 </div>
               </div>

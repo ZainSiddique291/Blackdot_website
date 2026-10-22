@@ -159,7 +159,7 @@ export default function Footer({ onNavigate }) {
                 <MapPin className="w-4 h-4 text-brand-gold mt-1 flex-shrink-0" />
                 <div className="text-xs">
                   <span className="text-white font-medium block">Dispatch Center:</span>
-                  <span>Lahore &amp; Karachi Fulfillment Hubs, Pakistan</span>
+                  <span>Sargodha, Pakistan</span>
                 </div>
               </div>
             </div>

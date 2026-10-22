@@ -9,6 +9,7 @@ const PAKISTAN_CITIES = [
   'Islamabad',
   'Rawalpindi',
   'Faisalabad',
+  'Sargodha',
   'Multan',
   'Peshawar',
   'Quetta',
