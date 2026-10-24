@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Award, Sparkles, Heart, Droplets, CheckCircle, ChevronRight } from 'lucide-react';
+import { ShieldCheck, Award, Heart, Droplets, CheckCircle, ChevronRight } from 'lucide-react';
 import Logo from '../components/common/Logo';
 
 export default function About({ onNavigateShop, onNavigateHome }) {
@@ -85,7 +85,7 @@ export default function About({ onNavigateShop, onNavigateHome }) {
             </div>
 
             <div className="p-6 rounded-xl bg-brand-ivory border border-brand-border text-center">
-              <Sparkles className="w-8 h-8 text-brand-gold-dark mx-auto mb-3" />
+              <CheckCircle className="w-8 h-8 text-brand-gold-dark mx-auto mb-3" />
               <h4 className="font-heading text-base font-semibold text-brand-black">Fortified Keratin</h4>
               <p className="text-xs text-brand-muted mt-2">Micro-peptides bond to fractured cuticles for remarkable tensile strength.</p>
             </div>

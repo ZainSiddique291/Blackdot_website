@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Filter, SlidersHorizontal, Search, Sparkles, ChevronRight } from 'lucide-react';
+import { Filter, SlidersHorizontal, Search, ChevronRight } from 'lucide-react';
 import ProductCard from '../components/products/ProductCard';
 import { PRODUCTS, CATEGORIES } from '../data/products';
 
@@ -129,7 +129,7 @@ export default function Shop({ initialCategory = 'all', onNavigateHome }) {
         {/* Products Grid */}
         {filtered.length === 0 ? (
           <div className="bg-white rounded-2xl p-12 text-center border border-brand-border">
-            <Sparkles className="w-10 h-10 text-brand-gold mx-auto mb-3" />
+            <Search className="w-8 h-8 text-brand-gold-dark mx-auto mb-3" />
             <h3 className="font-heading text-xl font-semibold text-brand-black">No Products Match Your Criteria</h3>
             <p className="text-xs text-brand-muted mt-1 max-w-sm mx-auto mb-6">
               Try adjusting your search keywords or switching category filters.

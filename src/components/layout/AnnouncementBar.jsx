@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Truck, ShieldCheck, ChevronRight } from 'lucide-react';
+import { Truck, ShieldCheck, ChevronRight } from 'lucide-react';
 
 const ANNOUNCEMENTS = [
   {
@@ -8,7 +8,7 @@ const ANNOUNCEMENTS = [
     highlight: 'FREE DELIVERY',
   },
   {
-    icon: Sparkles,
+    icon: ShieldCheck,
     text: 'Discover the 7-in-1 Advanced Formula — Limited First Batch Now Live',
     highlight: 'SIGNATURE DROP',
   },

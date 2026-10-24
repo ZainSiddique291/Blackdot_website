@@ -1,5 +1,5 @@
 import React from 'react';
-import { Truck, ShieldCheck, Sparkles, Award, RotateCcw, Clock } from 'lucide-react';
+import { Truck, ShieldCheck, Award, RotateCcw, Clock } from 'lucide-react';
 
 const BENEFITS = [
   {
@@ -15,7 +15,7 @@ const BENEFITS = [
     tag: 'Guaranteed Pure',
   },
   {
-    icon: Sparkles,
+    icon: Award,
     title: 'Proven 7-in-1 Results',
     description: 'Fortified with hydrolyzed keratin, biotin & pure cold-pressed Moroccan argan oil.',
     tag: 'Clinically Backed',

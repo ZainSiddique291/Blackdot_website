@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import ProductCard from '../products/ProductCard';
 import { PRODUCTS, CATEGORIES } from '../../data/products';
 
@@ -15,11 +15,6 @@ export default function FeaturedProducts({ onNavigateShop }) {
       <div className="max-w-site mx-auto px-5 sm:px-8 lg:px-12">
         {/* Editorial Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold-tint border border-brand-gold/40 text-brand-gold-dark text-xs font-semibold uppercase tracking-[0.2em] mb-4 shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 text-brand-gold-dark animate-pulse-slow" />
-            <span>Curated Formulations</span>
-          </div>
-          
           <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-brand-black tracking-tight">
             SIGNATURE <span className="text-brand-gold-dark italic">COLLECTION</span>
           </h2>

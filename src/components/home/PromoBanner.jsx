@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Sparkles, Gift } from 'lucide-react';
+import { ArrowRight, Gift } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { PRODUCTS } from '../../data/products';
 

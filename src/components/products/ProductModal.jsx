@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Star, ShoppingBag, Check, ShieldCheck, Truck, Sparkles, Heart } from 'lucide-react';
+import { X, Star, ShoppingBag, Check, ShieldCheck, Truck, Heart } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 
 export default function ProductModal() {
@@ -139,7 +139,7 @@ export default function ProductModal() {
               {product.benefits && (
                 <div className="mt-6 pt-5 border-t border-brand-border">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-brand-black mb-2.5 flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-brand-gold-dark" />
+                    <Check className="w-3.5 h-3.5 text-brand-gold-dark" />
                     <span>Formula Efficacy Highlights:</span>
                   </h4>
                   <ul className="space-y-1.5 text-xs text-brand-text">

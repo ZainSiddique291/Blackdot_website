@@ -1,6 +1,7 @@
 import React from 'react';
-import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight, ShieldCheck, Truck } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight, ShieldCheck, Truck, Lock, Crown } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
+import { useAuth } from '../../context/AuthContext';
 
 export default function CartDrawer({ onProceedCheckout }) {
   const {
@@ -16,6 +17,22 @@ export default function CartDrawer({ onProceedCheckout }) {
     freeShippingRemaining,
     freeShippingProgress,
   } = useCart();
+
+  const { isAuthenticated, user, openAuthModal } = useAuth();
+
+  const handleCheckoutClick = () => {
+    if (!isAuthenticated) {
+      setIsCartOpen(false);
+      openAuthModal({
+        mode: 'login',
+        redirectAction: 'checkout',
+        message: 'VIP Checkout Protection: Please sign in or create an account to proceed with your order.',
+      });
+    } else {
+      setIsCartOpen(false);
+      onProceedCheckout();
+    }
+  };
 
   if (!isCartOpen) return null;
 
@@ -54,7 +71,7 @@ export default function CartDrawer({ onProceedCheckout }) {
               <span className="flex items-center gap-1.5 text-zinc-300">
                 <Truck className="w-3.5 h-3.5 text-brand-gold" />
                 {isFreeShipping ? (
-                  <span className="text-brand-gold font-bold">🎉 FREE Delivery Unlocked across Pakistan!</span>
+                  <span className="text-brand-gold font-bold">FREE Delivery Unlocked across Pakistan!</span>
                 ) : (
                   <span>Add <strong className="text-brand-gold">PKR {freeShippingRemaining.toLocaleString()}</strong> for Free Delivery</span>
                 )}
@@ -183,15 +200,35 @@ export default function CartDrawer({ onProceedCheckout }) {
                 </div>
               </div>
 
+              {/* VIP Auth Status / Guard Indicator */}
+              <div className="mb-3 p-2 rounded bg-brand-gold/10 border border-brand-gold/25 text-[11px] flex items-center justify-between">
+                {isAuthenticated ? (
+                  <span className="text-brand-black flex items-center gap-1.5 font-medium">
+                    <Crown className="w-3.5 h-3.5 text-brand-gold-dark" />
+                    <span>Logged in as: <strong className="text-brand-gold-dark">{user?.name}</strong></span>
+                  </span>
+                ) : (
+                  <span className="text-brand-black flex items-center gap-1.5">
+                    <Lock className="w-3.5 h-3.5 text-brand-gold-dark" />
+                    <span>Sign in required before placing order</span>
+                  </span>
+                )}
+                {!isAuthenticated && (
+                  <button
+                    onClick={handleCheckoutClick}
+                    className="text-brand-gold-dark hover:underline font-bold uppercase tracking-wider text-[10px] cursor-pointer"
+                  >
+                    Sign In
+                  </button>
+                )}
+              </div>
+
               {/* Checkout Button */}
               <button
-                onClick={() => {
-                  setIsCartOpen(false);
-                  onProceedCheckout();
-                }}
-                className="w-full py-4 bg-brand-gold hover:bg-brand-gold-dark text-brand-black font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase rounded shadow-lg transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-gold-glow"
+                onClick={handleCheckoutClick}
+                className="w-full py-4 bg-brand-gold hover:bg-brand-gold-dark text-brand-black font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase rounded shadow-lg transition-all duration-300 flex items-center justify-center gap-2 hover:shadow-gold-glow cursor-pointer"
               >
-                <span>PROCEED TO SECURE CHECKOUT</span>
+                <span>{isAuthenticated ? 'PROCEED TO SECURE CHECKOUT' : 'SIGN IN & PROCEED TO CHECKOUT'}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 

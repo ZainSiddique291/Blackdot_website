@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, ShieldCheck, Sparkles, Feather } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Feather } from 'lucide-react';
 import Logo from '../common/Logo';
 
 export default function BrandStory({ onNavigateAbout }) {

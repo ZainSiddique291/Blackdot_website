@@ -39,9 +39,6 @@ export default function CategorySection({ onSelectCategory }) {
               SHOP BY <span className="text-brand-gold-dark">CATEGORY</span>
             </h2>
           </div>
-          <p className="text-sm text-brand-muted max-w-md mt-4 md:mt-0">
-            Tailored hair wellness regimens formulated to target hair fall, stimulate growth, and restore radiant shine.
-          </p>
         </div>
 
         {/* 3 Large Category Tiles */}

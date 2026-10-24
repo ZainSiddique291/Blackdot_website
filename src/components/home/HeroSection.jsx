@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Truck, ShieldCheck, Leaf, Sparkles, ShoppingBag } from 'lucide-react';
+import { Truck, ShieldCheck, Leaf, ShoppingBag } from 'lucide-react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useCart } from '../../context/CartContext';
 import { PRODUCTS } from '../../data/products';
@@ -100,18 +100,10 @@ export default function HeroSection({ onShopClick }) {
             animate="visible"
             className="lg:col-span-7 xl:col-span-6 z-20 flex flex-col justify-center my-auto pt-2 lg:pt-0"
           >
-            {/* 1. Eyebrow Tagline Badge */}
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-2 sm:mb-2.5">
-              <span className="inline-block px-3 py-1 rounded-full bg-white/85 border border-[#D8C7A5] text-[#8C6219] text-[10px] sm:text-xs font-semibold uppercase tracking-[0.2em] shadow-xs backdrop-blur-xs">
-                QUICK TO YOU. STRESS-FREE DELIVERY.
-              </span>
-              <span className="h-[1px] w-6 sm:w-10 bg-[#B8860B]/40 hidden sm:inline-block" />
-            </motion.div>
-
-            {/* 2. Main Editorial Headline */}
+            {/* 1. Main Editorial Headline */}
             <motion.h1
               variants={itemVariants}
-              className="font-heading text-2xl sm:text-3xl lg:text-[34px] xl:text-[42px] leading-[1.08] text-[#0B0B0B] tracking-tight"
+              className="font-heading text-3xl sm:text-4xl lg:text-[42px] xl:text-[50px] leading-[1.06] text-[#0B0B0B] tracking-tight"
             >
               AMAZING{' '}
               <span className="font-serif italic font-medium bg-gradient-to-r from-[#B8860B] via-[#C99A3B] to-[#9E7426] bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(201,154,59,0.15)]">
@@ -255,30 +247,6 @@ export default function HeroSection({ onShopClick }) {
                 className="absolute inset-0 -m-8 bg-gradient-to-r from-[#E2C27A]/20 via-[#C99A3B]/25 to-transparent rounded-full blur-3xl pointer-events-none"
               />
 
-              {/* Floating Micro-Sparkles Gold Dust Particles */}
-              {[...Array(5)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  animate={{
-                    y: [-12, 12, -12],
-                    x: [i % 2 === 0 ? -10 : 10, i % 2 === 0 ? 10 : -10, i % 2 === 0 ? -10 : 10],
-                    opacity: [0.2, 0.9, 0.2],
-                    scale: [0.8, 1.3, 0.8],
-                  }}
-                  transition={{
-                    duration: 3.2 + i * 0.7,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                    delay: i * 0.5,
-                  }}
-                  className="absolute w-1.5 h-1.5 rounded-full bg-[#E2C27A] shadow-[0_0_10px_#C99A3B] pointer-events-none z-30"
-                  style={{
-                    top: `${14 + i * 16}%`,
-                    left: `${15 + (i * 20) % 70}%`,
-                  }}
-                />
-              ))}
-
               {/* Continuous Luxury Floating Bottle Layer */}
               <motion.div
                 animate={{
@@ -345,9 +313,8 @@ export default function HeroSection({ onShopClick }) {
 
               {/* Hover Luxury Interactive Tag Pill */}
               <div className="absolute -bottom-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0 z-30 pointer-events-none">
-                <div className="px-3.5 py-1.5 rounded-full bg-[#0B0B0B]/90 backdrop-blur-md text-[#C99A3B] text-[10px] font-bold tracking-wider uppercase border border-[#C99A3B]/40 shadow-xl flex items-center gap-1.5">
-                  <Sparkles className="w-3 h-3 text-[#E2C27A]" />
-                  <span>Click to Experience Ritual</span>
+                <div className="px-3.5 py-1.5 rounded-full bg-[#0B0B0B]/90 backdrop-blur-md text-[#C99A3B] text-[10px] font-bold tracking-wider uppercase border border-[#C99A3B]/40 shadow-xl flex items-center justify-center">
+                  <span>Experience Ritual</span>
                 </div>
               </div>
 
