@@ -3,34 +3,41 @@ import { ArrowUpRight } from 'lucide-react';
 
 const CATEGORY_ITEMS = [
   {
+    id: 'creams',
+    title: 'Beauty Creams',
+    subtitle: 'Illuminating Day, Restorative Night & Peptide Creams',
+    image: '/images/products/cream_day.jpg',
+    itemsCount: '3 Formulations',
+  },
+  {
+    id: 'serums',
+    title: 'Signature Serums',
+    subtitle: 'Stabilized Vitamin C, Hyaluronic Acid & Niacinamide',
+    image: '/images/products/serum_vitc.jpg',
+    itemsCount: '4 Formulations',
+  },
+  {
+    id: 'lotions',
+    title: 'Luxury Lotions',
+    subtitle: 'Deep Hydration 48-Hour & Velvet Touch Body Emulsions',
+    image: '/images/products/lotion_hydration.jpg',
+    itemsCount: '3 Formulations',
+  },
+  {
     id: 'shampoo',
-    title: 'Advanced Shampoos',
-    subtitle: '7-in-1 Restorative & Cleansing Solutions',
+    title: 'Advanced Haircare',
+    subtitle: '7-in-1 Botanical Restorative Shampoos & Oils',
     image: '/images/hero_stage.png',
     itemsCount: '2 Formulations',
-  },
-  {
-    id: 'treatment',
-    title: 'Botanical Oils & Serums',
-    subtitle: 'Virgin Argan, Biotin & Thermal Glass Shields',
-    image: '/images/bottles_crop.png',
-    itemsCount: '2 Formulations',
-  },
-  {
-    id: 'bundles',
-    title: 'Luxury Ritual Bundles',
-    subtitle: 'Curated 3-Piece Transformations with Gold Scalp Massager',
-    image: '/images/hero_full_reference.jpg',
-    itemsCount: '1 Curated Box',
   },
 ];
 
 export default function CategorySection({ onSelectCategory }) {
   return (
-    <section className="bg-white py-20 border-b border-brand-border">
-      <div className="max-w-site mx-auto px-5 sm:px-8 lg:px-12">
+    <section className="bg-white py-16 sm:py-20 border-b border-brand-border">
+      <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-12">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
           <div>
             <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.25em] text-brand-gold-dark mb-2">
               DISCOVER BY RITUAL
@@ -41,8 +48,8 @@ export default function CategorySection({ onSelectCategory }) {
           </div>
         </div>
 
-        {/* 3 Large Category Tiles */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        {/* 4 Category Tiles */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {CATEGORY_ITEMS.map((cat) => (
             <div
               key={cat.id}

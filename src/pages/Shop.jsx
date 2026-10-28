@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Filter, SlidersHorizontal, Search, ChevronRight } from 'lucide-react';
 import ProductCard from '../components/products/ProductCard';
 import { PRODUCTS, CATEGORIES } from '../data/products';
@@ -8,6 +8,10 @@ export default function Shop({ initialCategory = 'all', onNavigateHome }) {
   const [sortBy, setSortBy] = useState('featured');
   const [searchQuery, setSearchQuery] = useState('');
   const [maxPrice, setMaxPrice] = useState(6000);
+
+  useEffect(() => {
+    setSelectedCategory(initialCategory);
+  }, [initialCategory]);
 
   // Filter logic
   let filtered = PRODUCTS.filter((product) => {

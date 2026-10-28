@@ -10,19 +10,19 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.04,
+      staggerChildren: 0.11,
+      delayChildren: 0.08,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 12 },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.7,
       ease: [0.16, 1, 0.3, 1],
     },
   },
@@ -67,7 +67,7 @@ export default function HeroSection({ onShopClick }) {
       ref={heroRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative overflow-hidden bg-[#F7F5F0] border-b border-[#E5E1D8] min-h-[calc(100vh-56px)] lg:h-[calc(100vh-56px)] lg:max-h-[calc(100vh-56px)] flex items-center select-none py-6 lg:py-0"
+      className="relative overflow-hidden bg-[#F7F5F0] border-b border-[#E5E1D8] min-h-[calc(100vh-56px)] flex items-center select-none py-6 sm:py-8 lg:py-4"
     >
       {/* 1. Full-Width Clean Backdrop with Empty Luxury Granite Stage */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -100,28 +100,39 @@ export default function HeroSection({ onShopClick }) {
             animate="visible"
             className="lg:col-span-7 xl:col-span-6 z-20 flex flex-col justify-center my-auto pt-2 lg:pt-0"
           >
-            {/* 1. Main Editorial Headline */}
-            <motion.h1
-              variants={itemVariants}
-              className="font-heading text-3xl sm:text-4xl lg:text-[42px] xl:text-[50px] leading-[1.06] text-[#0B0B0B] tracking-tight"
-            >
-              AMAZING{' '}
-              <span className="font-serif italic font-medium bg-gradient-to-r from-[#B8860B] via-[#C99A3B] to-[#9E7426] bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(201,154,59,0.15)]">
-                BLACK DOT
+            {/* 1. Main Editorial Headline with Cinematic Mask Reveal */}
+            <h1 className="font-heading text-2xl sm:text-3xl lg:text-[38px] xl:text-[44px] leading-[1.18] sm:leading-[1.2] text-[#0B0B0B] tracking-tight pb-2 overflow-visible select-none">
+              {/* Line 1: AMAZING BLACK DOT */}
+              <span className="cinematic-mask-wrapper block">
+                <span className="cinematic-line-1">
+                  AMAZING{' '}
+                  <span className="font-serif font-semibold bg-gradient-to-r from-[#B8860B] via-[#D4A346] to-[#9E7426] bg-clip-text text-transparent drop-shadow-[0_2px_4px_rgba(201,154,59,0.25)]">
+                    BLACK DOT
+                  </span>
+                </span>
               </span>
-              <br />
-              SIGNATURE
-              <br />
-              COLLECTIONS
-            </motion.h1>
 
-            {/* 3. Description */}
-            <motion.p
-              variants={itemVariants}
-              className="mt-2 sm:mt-2.5 text-xs sm:text-[13px] lg:text-[13.5px] leading-relaxed text-[#2B2927] max-w-lg font-normal"
-            >
-              Black Dot represents mystery, elegance, and minimal power. Inspired by monochrome fashion and modern culture, the brand was built to create pieces that feel bold, refined, and unforgettable.
-            </motion.p>
+              {/* Line 2: SIGNATURE */}
+              <span className="cinematic-mask-wrapper block">
+                <span className="cinematic-line-2 text-[#0B0B0B]">
+                  SIGNATURE
+                </span>
+              </span>
+
+              {/* Line 3: COLLECTIONS */}
+              <span className="cinematic-mask-wrapper block">
+                <span className="cinematic-line-3 text-[#0B0B0B]">
+                  COLLECTIONS
+                </span>
+              </span>
+            </h1>
+
+            {/* 2. Description Subtitle with Coordinated Cinematic Reveal */}
+            <div className="cinematic-mask-wrapper">
+              <p className="cinematic-subtitle mt-3 sm:mt-3.5 text-xs sm:text-[13.5px] lg:text-[14px] leading-relaxed text-[#2B2927] max-w-lg font-normal">
+                Black Dot represents mystery, elegance, and minimal power. Inspired by monochrome fashion and modern culture, the brand was built to create pieces that feel bold, refined, and unforgettable.
+              </p>
+            </div>
 
             {/* 4. Slogan */}
             <motion.div
@@ -136,19 +147,23 @@ export default function HeroSection({ onShopClick }) {
 
             {/* 5. Primary Gold CTA Button & Secondary Link */}
             <motion.div variants={itemVariants} className="mt-3.5 sm:mt-4 flex items-center gap-3">
-              <button
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={() => addToCart(mainProduct, 1, '500ml')}
                 className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#D4A346] via-[#C99A3B] to-[#B3832B] hover:brightness-105 text-[#0B0B0B] font-bold text-xs tracking-[0.16em] uppercase px-7 py-2.5 sm:py-3 rounded-xs shadow-[0_6px_20px_rgba(201,154,59,0.3)] hover:shadow-gold-glow transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
                 <span>SHOP NOW</span>
                 <span className="text-sm transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </button>
-              <button
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={onShopClick}
                 className="inline-flex items-center justify-center text-xs font-semibold tracking-[0.16em] uppercase text-[#66625D] hover:text-[#0B0B0B] px-3 py-2.5 transition-colors cursor-pointer"
               >
                 <span>Explore Rituals</span>
-              </button>
+              </motion.button>
             </motion.div>
 
             {/* 6. 3 Compact Trust Indicators */}
@@ -262,18 +277,21 @@ export default function HeroSection({ onShopClick }) {
                 className="relative flex flex-col items-center justify-end w-full"
                 style={{ transformStyle: 'preserve-3d' }}
               >
-                {/* Product Bottle Image */}
+                {/* Product Bottle Image - Razor Sharp & Crystal Clear */}
                 <div className="relative">
                   <motion.img
-                    src="/images/blackdot_luxury_bottles_3d.png"
+                    src="/images/blackdot_luxury_bottles_3d_crisp.png"
                     alt="Black Dot Luxury Haircare Shampoo Bottles"
-                    className="relative z-10 w-auto h-[36vh] sm:h-[44vh] lg:h-[48vh] xl:h-[54vh] max-h-[290px] sm:max-h-[360px] lg:max-h-[430px] xl:max-h-[480px] object-contain drop-shadow-[0_16px_36px_rgba(0,0,0,0.35)] select-none pointer-events-none"
+                    className="relative z-10 w-auto h-[36vh] sm:h-[44vh] lg:h-[48vh] xl:h-[54vh] max-h-[290px] sm:max-h-[360px] lg:max-h-[430px] xl:max-h-[480px] object-contain select-none pointer-events-none"
+                    style={{
+                      imageRendering: '-webkit-optimize-contrast',
+                    }}
                     draggable={false}
                     fetchPriority="high"
                   />
 
                   {/* Specular Diagonal Light Sweep / Sheen Glint */}
-                  <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden rounded-2xl opacity-40 mix-blend-overlay">
+                  <div className="absolute inset-0 z-20 pointer-events-none overflow-hidden rounded-2xl opacity-30 mix-blend-screen">
                     <motion.div
                       animate={{
                         x: ['-140%', '180%'],

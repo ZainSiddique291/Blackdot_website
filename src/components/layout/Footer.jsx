@@ -41,7 +41,31 @@ export default function Footer({ onNavigate }) {
               <li>
                 <button
                   onClick={() => onNavigate('shop')}
-                  className="hover:text-brand-gold transition-colors"
+                  className="hover:text-brand-gold transition-colors cursor-pointer"
+                >
+                  Radiance Beauty Creams
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('shop')}
+                  className="hover:text-brand-gold transition-colors cursor-pointer"
+                >
+                  Active Botanical Serums
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('shop')}
+                  className="hover:text-brand-gold transition-colors cursor-pointer"
+                >
+                  Nourishing Body Lotions
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate('shop')}
+                  className="hover:text-brand-gold transition-colors cursor-pointer"
                 >
                   7-in-1 Advanced Shampoo
                 </button>
@@ -49,31 +73,7 @@ export default function Footer({ onNavigate }) {
               <li>
                 <button
                   onClick={() => onNavigate('shop')}
-                  className="hover:text-brand-gold transition-colors"
-                >
-                  Restorative Argan Hair Oil
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('shop')}
-                  className="hover:text-brand-gold transition-colors"
-                >
-                  Keratin Silk Conditioner
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('shop')}
-                  className="hover:text-brand-gold transition-colors"
-                >
-                  Anti-Frizz Silk Serum
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('shop')}
-                  className="hover:text-brand-gold transition-colors"
+                  className="hover:text-brand-gold transition-colors cursor-pointer"
                 >
                   Complete Luxury Bundles
                 </button>

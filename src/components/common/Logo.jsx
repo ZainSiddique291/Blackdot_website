@@ -5,88 +5,83 @@ export default function Logo({
   size = 'md',
   className = '',
   showTagline = true,
+  displayType = 'standard', // 'standard' (emblem + text), 'emblemOnly', 'officialImage'
 }) {
-  const isDark = variant === 'dark'; // Dark navbar/footer: white text
-  
+  const isDark = variant === 'dark';
+
   const emblemSize = {
     sm: 'w-8 h-8',
     md: 'w-10 h-10',
-    lg: 'w-14 h-14',
+    lg: 'w-11 h-11',
+    xl: 'w-14 h-14',
   }[size] || 'w-10 h-10';
 
   const titleSize = {
-    sm: 'text-lg',
-    md: 'text-xl md:text-2xl',
-    lg: 'text-2xl md:text-3xl',
+    sm: 'text-base sm:text-lg',
+    md: 'text-lg sm:text-xl md:text-2xl',
+    lg: 'text-xl sm:text-2xl',
+    xl: 'text-2xl sm:text-3xl',
   }[size] || 'text-xl';
 
   const subtitleSize = {
-    sm: 'text-[8px]',
-    md: 'text-[9px] md:text-[10px]',
-    lg: 'text-xs',
+    sm: 'text-[7.5px] sm:text-[8px]',
+    md: 'text-[8.5px] sm:text-[9.5px]',
+    lg: 'text-[9px] sm:text-[9.5px]',
+    xl: 'text-xs',
   }[size] || 'text-[9px]';
+
+  if (displayType === 'officialImage') {
+    return (
+      <div className={`inline-flex items-center select-none ${className}`}>
+        <img
+          src="/images/blackdot_official_logo_transparent.png"
+          alt="Black Dot - One Dot Infinite Vision"
+          className="h-auto max-h-12 w-auto object-contain transition-transform duration-300 hover:scale-105"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className={`flex items-center gap-3 select-none ${className}`}>
-      {/* Gold Circular BD Emblem */}
-      <div className={`relative ${emblemSize} flex-shrink-0 transition-transform duration-300 hover:scale-105`}>
-        <svg
-          viewBox="0 0 100 100"
-          className="w-full h-full drop-shadow-[0_2px_8px_rgba(201,154,59,0.3)]"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#E2C27A" />
-              <stop offset="50%" stopColor="#C99A3B" />
-              <stop offset="100%" stopColor="#9E7426" />
-            </linearGradient>
-            <linearGradient id="goldGradientLight" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#F3E8D0" />
-              <stop offset="50%" stopColor="#C99A3B" />
-              <stop offset="100%" stopColor="#805B17" />
-            </linearGradient>
-          </defs>
-
-          {/* Outer circle with gold border */}
-          <circle cx="50" cy="50" r="47" stroke="url(#goldGradient)" strokeWidth="3" fill="#0B0B0B" />
-          {/* Inner accent ring */}
-          <circle cx="50" cy="50" r="41" stroke="url(#goldGradientLight)" strokeWidth="1" strokeDasharray="3 2" />
-          
-          {/* BD Monogram Typography */}
-          <text
-            x="50"
-            y="61"
-            fontFamily="'Playfair Display', Georgia, serif"
-            fontSize="40"
-            fontWeight="bold"
-            letterSpacing="-1"
-            fill="url(#goldGradient)"
-            textAnchor="middle"
-          >
-            BD
-          </text>
-        </svg>
+      {/* Official Circular BD 3D Emblem with luxury protection badge */}
+      <div
+        className={`relative ${emblemSize} flex-shrink-0 rounded-full transition-transform duration-300 hover:scale-105 flex items-center justify-center ${
+          isDark
+            ? 'bg-white/95 p-[3px] shadow-[0_2px_10px_rgba(201,154,59,0.25)] border border-brand-gold/40'
+            : 'bg-transparent p-0'
+        }`}
+      >
+        <img
+          src="/images/blackdot_official_emblem.png"
+          alt="Black Dot Official Emblem"
+          className="w-full h-full object-contain filter drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]"
+        />
       </div>
 
-      {/* Brand Text */}
-      <div className="flex flex-col leading-none">
-        <span
-          className={`font-heading font-semibold tracking-wide ${titleSize} ${
-            isDark ? 'text-white' : 'text-brand-black'
-          }`}
-        >
-          Black Dot
-        </span>
-        {showTagline && (
+      {/* Brand Name & Tagline */}
+      {displayType !== 'emblemOnly' && (
+        <div className="flex flex-col leading-none">
           <span
-            className={`font-body uppercase tracking-[0.25em] font-medium mt-1 text-brand-gold ${subtitleSize}`}
+            className={`font-heading font-bold tracking-tight ${titleSize} ${
+              isDark ? 'text-white' : 'text-brand-black'
+            }`}
           >
-            ONE DOT · INFINITE VISION
+            Black Dot
           </span>
-        )}
-      </div>
+          {showTagline && (
+            <span
+              className={`font-body uppercase tracking-[0.24em] font-semibold mt-1 flex items-center gap-1.5 ${
+                isDark ? 'text-brand-gold' : 'text-brand-gold-dark'
+              } ${subtitleSize}`}
+            >
+              <span>ONE DOT</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#F29420] inline-block shadow-[0_0_6px_rgba(242,148,32,0.5)]" />
+              <span>INFINITE VISION</span>
+            </span>
+          )}
+        </div>
+      )}
     </div>
   );
 }

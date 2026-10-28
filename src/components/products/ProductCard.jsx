@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Eye, ShoppingBag, Star, Check } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useCart } from '../../context/CartContext';
 
 export default function ProductCard({ product }) {
@@ -20,29 +21,29 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <div
+    <motion.div
+      whileHover={{ y: -6, transition: { duration: 0.25, ease: 'easeOut' } }}
       onClick={() => setQuickViewProduct(product)}
-      className="group relative bg-white rounded-xl border border-brand-border/80 hover:border-brand-gold/50 transition-all duration-300 hover:shadow-luxury flex flex-col overflow-hidden cursor-pointer"
+      className="group relative bg-white rounded-2xl border border-brand-border/80 hover:border-brand-gold/60 transition-all duration-300 hover:shadow-[0_16px_36px_rgba(201,154,59,0.12)] flex flex-col overflow-hidden cursor-pointer"
     >
       {/* Top Image Stage */}
       <div className="relative aspect-[4/5] bg-gradient-to-b from-brand-ivory to-stone-100 overflow-hidden flex items-center justify-center p-6">
-        {/* Badge */}
-        {product.badge && (
-          <div className="absolute top-3 left-3 z-10">
-            <span className="px-2.5 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-brand-black text-brand-gold border border-brand-gold/30 rounded-full shadow-sm">
+        {/* Top Oval Labels Bar */}
+        <div className="absolute top-2.5 sm:top-3 inset-x-2.5 sm:inset-x-3 z-10 flex items-center justify-between gap-1.5 pointer-events-none">
+          {product.badge ? (
+            <span className="inline-flex items-center px-2.5 py-0.5 text-[9.5px] sm:text-[10px] font-bold uppercase tracking-wider bg-brand-black/90 backdrop-blur-xs text-brand-gold border border-brand-gold/30 rounded-full shadow-xs whitespace-nowrap">
               {product.badge}
             </span>
-          </div>
-        )}
+          ) : (
+            <span />
+          )}
 
-        {/* Volume Pill */}
-        {product.volume && (
-          <div className="absolute top-3 right-3 z-10">
-            <span className="px-2 py-0.5 text-[10px] font-medium tracking-wider uppercase bg-white/90 text-brand-black border border-brand-border rounded shadow-xs">
+          {product.volume && (
+            <span className="inline-flex items-center px-2.5 py-0.5 text-[9px] sm:text-[9.5px] font-semibold uppercase tracking-wider bg-white/95 backdrop-blur-xs text-brand-black border border-brand-border rounded-full shadow-xs whitespace-nowrap ml-auto">
               {product.volume}
             </span>
-          </div>
-        )}
+          )}
+        </div>
 
         {/* Product Image */}
         <img
@@ -138,6 +139,6 @@ export default function ProductCard({ product }) {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
