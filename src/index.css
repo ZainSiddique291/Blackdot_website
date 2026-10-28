@@ -6,6 +6,7 @@
   html {
     scroll-behavior: smooth;
     color-scheme: light;
+    overflow-x: hidden;
   }
   
   body {
@@ -16,6 +17,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    width: 100%;
   }
 
   h1, h2, h3, h4, .font-heading {
@@ -25,6 +27,18 @@
 
   button, input, select, textarea {
     font: inherit;
+  }
+
+  /* Prevent disruptive auto-zoom on mobile devices when tapping input fields */
+  @media screen and (max-width: 767px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"],
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
   }
 
   button, a {

@@ -60,7 +60,7 @@ export default function VerifiedBy() {
             <span>QUALITY &amp; SAFETY ASSURANCE</span>
           </div>
 
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-[#0B0B0B] tracking-tight">
+          <h2 className="font-heading text-2xl sm:text-4xl md:text-5xl text-[#0B0B0B] tracking-tight">
             VERIFIED BY{' '}
             <span className="font-serif italic bg-gradient-to-r from-[#B8860B] via-[#C99A3B] to-[#9E7426] bg-clip-text text-transparent">
               AUTHENTIC STANDARDS
@@ -73,7 +73,7 @@ export default function VerifiedBy() {
         </motion.div>
 
         {/* Verification Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
           {VERIFICATION_PILLARS.map((item, index) => {
             const Icon = item.icon;
 

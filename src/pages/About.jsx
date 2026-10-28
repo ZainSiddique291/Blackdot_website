@@ -18,7 +18,7 @@ export default function About({ onNavigateShop, onNavigateHome }) {
         </div>
 
         {/* Hero Banner */}
-        <div className="bg-brand-black text-white rounded-3xl p-8 sm:p-14 lg:p-20 relative overflow-hidden border border-brand-gold/30 shadow-2xl mb-16">
+        <div className="bg-brand-black text-white rounded-3xl p-6 sm:p-14 lg:p-20 relative overflow-hidden border border-brand-gold/30 shadow-2xl mb-12 sm:mb-16">
           <div className="absolute top-0 right-0 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none" />
           
           <div className="max-w-2xl relative z-10">
@@ -28,11 +28,11 @@ export default function About({ onNavigateShop, onNavigateHome }) {
             <p className="text-xs uppercase tracking-[0.25em] font-bold text-brand-gold mb-2">
               OUR HERITAGE &amp; MISSION
             </p>
-            <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl text-white leading-tight">
+            <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl text-white leading-tight">
               One Dot. One Identity.{' '}
               <span className="text-brand-gold italic">Infinite Style.</span>
             </h1>
-            <p className="mt-6 text-zinc-300 text-base sm:text-lg leading-relaxed">
+            <p className="mt-4 sm:mt-6 text-zinc-300 text-sm sm:text-lg leading-relaxed">
               Black Dot is an intentional departure from over-marketed, generic haircare. We believe genuine personal luxury should feel elemental, effortless, and visibly restorative from the very first lather.
             </p>
           </div>

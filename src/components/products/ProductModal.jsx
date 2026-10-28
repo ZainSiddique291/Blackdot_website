@@ -23,7 +23,7 @@ export default function ProductModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
       {/* Backdrop */}
       <div
         onClick={() => setQuickViewProduct(null)}
@@ -31,21 +31,21 @@ export default function ProductModal() {
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl border border-brand-border overflow-hidden z-10 my-8">
+      <div className="relative w-full max-w-4xl max-h-[92vh] bg-white rounded-2xl shadow-2xl border border-brand-border overflow-hidden z-10 my-auto sm:my-8 flex flex-col">
         {/* Close Button */}
         <button
           onClick={() => setQuickViewProduct(null)}
-          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/80 hover:bg-brand-black hover:text-white text-brand-black transition-colors shadow-sm"
+          className="absolute top-3 right-3 z-30 p-2 rounded-full bg-white/90 hover:bg-brand-black hover:text-white text-brand-black transition-colors shadow-md cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 overflow-y-auto">
           {/* Left Column: Image Gallery Stage */}
-          <div className="bg-brand-ivory p-8 flex flex-col items-center justify-center relative border-b md:border-b-0 md:border-r border-brand-border">
+          <div className="bg-brand-ivory p-5 sm:p-8 flex flex-col items-center justify-center relative border-b md:border-b-0 md:border-r border-brand-border">
             {product.badge && (
-              <span className="absolute top-4 left-4 px-3 py-1 bg-brand-black text-brand-gold text-[10px] font-bold uppercase tracking-widest rounded-full border border-brand-gold/40">
+              <span className="absolute top-3 left-3 sm:top-4 sm:left-4 px-2.5 sm:px-3 py-1 bg-brand-black text-brand-gold text-[9px] sm:text-[10px] font-bold uppercase tracking-widest rounded-full border border-brand-gold/40">
                 {product.badge}
               </span>
             )}
@@ -54,18 +54,18 @@ export default function ProductModal() {
               <img
                 src={product.image}
                 alt={product.name}
-                className="max-h-72 object-contain transition-transform duration-300 hover:scale-105"
+                className="max-h-56 sm:max-h-72 object-contain transition-transform duration-300 hover:scale-105"
               />
             </div>
 
-            <div className="mt-4 flex items-center gap-2 text-xs text-brand-muted">
+            <div className="mt-3 sm:mt-4 flex items-center gap-2 text-[11px] sm:text-xs text-brand-muted">
               <ShieldCheck className="w-4 h-4 text-brand-gold" />
               <span>100% Genuine Formula • Direct Laboratory Fresh</span>
             </div>
           </div>
 
           {/* Right Column: Information & Actions */}
-          <div className="p-6 sm:p-8 flex flex-col justify-between max-h-[85vh] overflow-y-auto">
+          <div className="p-5 sm:p-8 flex flex-col justify-between overflow-y-auto">
             <div>
               {/* Category & Rating */}
               <div className="flex items-center justify-between text-xs text-brand-muted mb-2">

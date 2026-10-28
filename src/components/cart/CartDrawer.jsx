@@ -45,14 +45,14 @@ export default function CartDrawer({ onProceedCheckout }) {
       />
 
       {/* Drawer Container */}
-      <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-white text-brand-black shadow-2xl flex flex-col justify-between">
+      <div className="absolute inset-y-0 right-0 max-w-full flex sm:pl-10 w-full justify-end">
+        <div className="w-full sm:w-screen sm:max-w-md bg-white text-brand-black shadow-2xl flex flex-col justify-between h-full">
           
           {/* Header */}
-          <div className="p-6 border-b border-brand-border flex items-center justify-between bg-brand-ivory">
+          <div className="p-4 sm:p-6 border-b border-brand-border flex items-center justify-between bg-brand-ivory">
             <div className="flex items-center gap-2.5">
               <ShoppingBag className="w-5 h-5 text-brand-gold-dark" />
-              <h2 className="font-heading text-xl font-semibold text-brand-black">
+              <h2 className="font-heading text-lg sm:text-xl font-semibold text-brand-black">
                 Your Shopping Bag ({cart.reduce((sum, i) => sum + i.quantity, 0)})
               </h2>
             </div>
@@ -144,7 +144,7 @@ export default function CartDrawer({ onProceedCheckout }) {
                       <div className="flex items-center border border-brand-border rounded">
                         <button
                           onClick={() => updateQuantity(item.cartItemId || item.id, item.quantity - 1)}
-                          className="p-1 hover:bg-black/5 text-brand-black transition-colors"
+                          className="p-1.5 min-w-[28px] min-h-[28px] flex items-center justify-center hover:bg-black/5 text-brand-black transition-colors cursor-pointer"
                           aria-label="Decrease quantity"
                         >
                           <Minus className="w-3.5 h-3.5" />
@@ -154,7 +154,7 @@ export default function CartDrawer({ onProceedCheckout }) {
                         </span>
                         <button
                           onClick={() => updateQuantity(item.cartItemId || item.id, item.quantity + 1)}
-                          className="p-1 hover:bg-black/5 text-brand-black transition-colors"
+                          className="p-1.5 min-w-[28px] min-h-[28px] flex items-center justify-center hover:bg-black/5 text-brand-black transition-colors cursor-pointer"
                           aria-label="Increase quantity"
                         >
                           <Plus className="w-3.5 h-3.5" />
@@ -174,7 +174,7 @@ export default function CartDrawer({ onProceedCheckout }) {
 
           {/* Footer Checkout Summary */}
           {cart.length > 0 && (
-            <div className="p-6 border-t border-brand-border bg-brand-ivory/50">
+            <div className="p-4 sm:p-6 border-t border-brand-border bg-brand-ivory/50">
               <div className="space-y-2 text-xs text-brand-text mb-4">
                 <div className="flex justify-between">
                   <span>Subtotal</span>

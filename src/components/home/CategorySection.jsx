@@ -54,7 +54,7 @@ export default function CategorySection({ onSelectCategory }) {
             <div
               key={cat.id}
               onClick={() => onSelectCategory(cat.id)}
-              className="group relative h-[380px] sm:h-[420px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 border border-brand-border hover:border-brand-gold/60 hover:-translate-y-1.5"
+              className="group relative h-[300px] sm:h-[380px] lg:h-[420px] rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500 border border-brand-border hover:border-brand-gold/60 hover:-translate-y-1.5"
             >
               {/* Background Product Image */}
               <img
@@ -68,26 +68,26 @@ export default function CategorySection({ onSelectCategory }) {
               <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent transition-opacity duration-300 group-hover:via-brand-black/50" />
 
               {/* Content overlay */}
-              <div className="absolute inset-0 p-7 flex flex-col justify-between z-10">
+              <div className="absolute inset-0 p-5 sm:p-7 flex flex-col justify-between z-10">
                 {/* Top Badge */}
                 <div className="flex justify-between items-center">
-                  <span className="px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-brand-gold bg-brand-black/80 rounded-full border border-brand-gold/30 backdrop-blur-md shadow-xs">
+                  <span className="px-3 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-brand-gold bg-brand-black/80 rounded-full border border-brand-gold/30 backdrop-blur-md shadow-xs">
                     {cat.itemsCount}
                   </span>
-                  <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-brand-gold group-hover:text-brand-black group-hover:scale-110 transition-all duration-300 shadow-sm">
-                    <ArrowUpRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-brand-gold group-hover:text-brand-black group-hover:scale-110 transition-all duration-300 shadow-sm">
+                    <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </div>
                 </div>
 
                 {/* Bottom Title & Subtitle */}
                 <div>
-                  <h3 className="font-heading text-2xl font-semibold text-white group-hover:text-brand-gold transition-colors duration-300">
+                  <h3 className="font-heading text-xl sm:text-2xl font-semibold text-white group-hover:text-brand-gold transition-colors duration-300">
                     {cat.title}
                   </h3>
-                  <p className="text-zinc-300 text-xs sm:text-sm mt-2 line-clamp-2">
+                  <p className="text-zinc-300 text-xs sm:text-sm mt-1 sm:mt-2 line-clamp-2">
                     {cat.subtitle}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-brand-gold underline underline-offset-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="mt-3 sm:mt-4 inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-brand-gold underline underline-offset-4 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
                     Explore Collection →
                   </span>
                 </div>

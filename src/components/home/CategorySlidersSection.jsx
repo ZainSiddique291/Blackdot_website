@@ -146,8 +146,8 @@ export default function CategorySlidersSection({ onNavigateShop }) {
                   key={slide.id}
                   className="w-full flex-shrink-0"
                 >
-                  {/* 4 product cards at a time within each slide */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+                  {/* 4 product cards within each slide - 2 columns on mobile */}
+                  <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-6">
                     {slideProducts.map((product) => {
                       const isAdded = addedProductId === product.id;
 
@@ -218,40 +218,40 @@ export default function CategorySlidersSection({ onNavigateShop }) {
                           </div>
 
                           {/* Details */}
-                          <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+                          <div className="p-3 sm:p-5 flex-1 flex flex-col justify-between">
                             <div>
                               {/* Rating & Reviews */}
-                              <div className="flex items-center justify-between text-xs mb-2">
+                              <div className="flex items-center justify-between text-xs mb-1.5 sm:mb-2">
                                 <div className="flex items-center text-amber-500 gap-1">
-                                  <Star className="w-3.5 h-3.5 fill-current" />
-                                  <span className="font-bold text-[#0B0B0B] text-xs">{product.rating}</span>
+                                  <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" />
+                                  <span className="font-bold text-[#0B0B0B] text-[11px] sm:text-xs">{product.rating}</span>
                                 </div>
-                                <span className="text-[11px] text-[#777777]">
+                                <span className="text-[10px] sm:text-[11px] text-[#777777]">
                                   {product.reviewsCount} reviews
                                 </span>
                               </div>
 
                               {/* Title */}
-                              <h3 className="font-heading text-sm sm:text-base font-semibold text-[#0B0B0B] group-hover:text-[#8C6219] transition-colors duration-200 line-clamp-1 leading-snug">
+                              <h3 className="font-heading text-xs sm:text-base font-semibold text-[#0B0B0B] group-hover:text-[#8C6219] transition-colors duration-200 line-clamp-1 leading-snug">
                                 {product.name}
                               </h3>
 
                               {/* Subtitle */}
                               {product.subtitle && (
-                                <p className="mt-1 text-xs text-[#66625D] line-clamp-1">
+                                <p className="mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-[#66625D] line-clamp-1">
                                   {product.subtitle}
                                 </p>
                               )}
                             </div>
 
                             {/* Price & Add to Bag */}
-                            <div className="mt-4 pt-3 border-t border-[#E5E1D8] flex items-center justify-between">
-                              <div className="flex items-baseline gap-1.5">
-                                <span className="text-sm sm:text-base font-bold text-[#0B0B0B]">
+                            <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-[#E5E1D8] flex items-center justify-between">
+                              <div className="flex flex-col sm:flex-row sm:items-baseline gap-0 sm:gap-1.5">
+                                <span className="text-xs sm:text-base font-bold text-[#0B0B0B]">
                                   PKR {product.price.toLocaleString()}
                                 </span>
                                 {product.originalPrice && (
-                                  <span className="text-[11px] text-[#888888] line-through">
+                                  <span className="text-[10px] sm:text-[11px] text-[#888888] line-through">
                                     PKR {product.originalPrice.toLocaleString()}
                                   </span>
                                 )}
@@ -259,7 +259,7 @@ export default function CategorySlidersSection({ onNavigateShop }) {
 
                               <button
                                 onClick={(e) => handleAdd(e, product)}
-                                className="p-2 rounded-full bg-[#F5EAD4] hover:bg-[#C99A3B] text-[#8C6219] hover:text-[#0B0B0B] transition-colors duration-200 shadow-2xs cursor-pointer"
+                                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#F5EAD4] hover:bg-[#C99A3B] text-[#8C6219] hover:text-[#0B0B0B] transition-colors duration-200 shadow-2xs flex items-center justify-center flex-shrink-0 cursor-pointer"
                                 aria-label={`Add ${product.name} to cart`}
                               >
                                 {isAdded ? (

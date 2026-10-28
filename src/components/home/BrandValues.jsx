@@ -68,7 +68,7 @@ export default function BrandValues() {
             <span>OUR CORE PHILOSOPHY</span>
           </div>
 
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-[#0B0B0B] tracking-tight">
+          <h2 className="font-heading text-2xl sm:text-4xl md:text-5xl text-[#0B0B0B] tracking-tight">
             THE BLACK DOT{' '}
             <span className="font-serif italic bg-gradient-to-r from-[#B8860B] via-[#C99A3B] to-[#9E7426] bg-clip-text text-transparent">
               VALUES &amp; QUALITIES
@@ -81,7 +81,7 @@ export default function BrandValues() {
         </motion.div>
 
         {/* 6 Core Value Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
           {VALUES.map((val, index) => {
             const Icon = val.icon;
 

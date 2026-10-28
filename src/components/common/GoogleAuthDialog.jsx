@@ -106,7 +106,7 @@ export default function GoogleAuthDialog({ isOpen, onClose, onGoogleSuccess }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
       {/* Backdrop */}
       <div
         onClick={onClose}
@@ -114,7 +114,7 @@ export default function GoogleAuthDialog({ isOpen, onClose, onGoogleSuccess }) {
       />
 
       {/* Google Modal Dialog */}
-      <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl border border-zinc-200 overflow-hidden z-10 animate-fadeIn text-zinc-900">
+      <div className="relative w-full max-w-md max-h-[92vh] overflow-y-auto bg-white rounded-2xl shadow-2xl border border-zinc-200 z-10 animate-fadeIn text-zinc-900 my-auto sm:my-8">
         {/* Header Bar */}
         <div className="px-6 pt-6 pb-4 border-b border-zinc-100 flex items-center justify-between">
           <div className="flex items-center gap-3">

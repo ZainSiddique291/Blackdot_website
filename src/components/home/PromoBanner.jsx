@@ -50,19 +50,19 @@ export default function PromoBanner({ onNavigateShop }) {
             </div>
 
             {/* Heading */}
-            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-tight">
+            <h2 className="font-heading text-2xl sm:text-4xl md:text-5xl text-white tracking-tight leading-tight">
               The Complete Hair{' '}
               <span className="font-serif italic bg-gradient-to-r from-[#E2C27A] via-[#C99A3B] to-[#9E7426] bg-clip-text text-transparent">
                 Transformation Ritual
               </span>
             </h2>
 
-            <p className="mt-4 text-zinc-300 text-sm sm:text-base max-w-xl leading-relaxed">
+            <p className="mt-3 sm:mt-4 text-zinc-300 text-xs sm:text-base max-w-xl leading-relaxed">
               Experience the synergistic power of our 7-in-1 Advanced Shampoo, Keratin Silk Conditioner, and Restorative Argan Oil. Includes a complimentary gold scalp stimulating massager and bespoke presentation gift box.
             </p>
 
             {/* Countdown Timer Block */}
-            <div className="mt-6 flex items-center gap-3">
+            <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-2.5 sm:gap-3">
               <span className="text-xs font-semibold uppercase tracking-wider text-[#C99A3B] flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5" />
                 <span>Special Price Closes In:</span>
@@ -83,29 +83,29 @@ export default function PromoBanner({ onNavigateShop }) {
             </div>
 
             {/* Pricing Section with Animated Pill */}
-            <div className="mt-6 flex items-baseline gap-4">
-              <span className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+            <div className="mt-5 sm:mt-6 flex items-baseline gap-3 sm:gap-4 flex-wrap">
+              <span className="text-xl sm:text-3xl font-bold text-white tracking-tight">
                 PKR 5,499
               </span>
-              <span className="text-base text-zinc-400 line-through">
+              <span className="text-sm sm:text-base text-zinc-400 line-through">
                 PKR 6,550
               </span>
               <motion.span
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-                className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-[#D4A346] to-[#C99A3B] text-[#0B0B0B] shadow-[0_4px_12px_rgba(201,154,59,0.3)]"
+                className="px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-[#D4A346] to-[#C99A3B] text-[#0B0B0B] shadow-[0_4px_12px_rgba(201,154,59,0.3)]"
               >
                 Save PKR 1,051
               </motion.span>
             </div>
 
             {/* Actions */}
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <motion.button
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => addToCart(bundleProduct, 1, 'Full Ritual Set')}
-                className="group relative overflow-hidden inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#D4A346] via-[#C99A3B] to-[#B3832B] hover:brightness-105 text-[#0B0B0B] font-bold text-xs sm:text-sm tracking-[0.2em] uppercase px-8 py-4 rounded-sm shadow-[0_8px_24px_rgba(201,154,59,0.3)] transition-all duration-300 cursor-pointer"
+                className="group relative overflow-hidden inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#D4A346] via-[#C99A3B] to-[#B3832B] hover:brightness-105 text-[#0B0B0B] font-bold text-xs sm:text-sm tracking-[0.2em] uppercase px-7 sm:px-8 py-3.5 sm:py-4 rounded-sm shadow-[0_8px_24px_rgba(201,154,59,0.3)] transition-all duration-300 cursor-pointer min-h-[46px]"
               >
                 <span>CLAIM LUXURY BUNDLE</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -113,7 +113,7 @@ export default function PromoBanner({ onNavigateShop }) {
 
               <button
                 onClick={onNavigateShop}
-                className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-[#C99A3B] text-zinc-300 hover:text-[#C99A3B] text-xs sm:text-sm tracking-[0.2em] uppercase px-6 py-4 rounded-sm transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-[#C99A3B] text-zinc-300 hover:text-[#C99A3B] text-xs sm:text-sm tracking-[0.2em] uppercase px-6 py-3.5 sm:py-4 rounded-sm transition-colors cursor-pointer min-h-[46px]"
               >
                 <span>Browse All Sets</span>
               </button>

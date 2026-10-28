@@ -133,18 +133,18 @@ export default function CheckoutModal({ isOpen, onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
       {/* Backdrop */}
       <div
         onClick={onClose}
         className="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
       />
 
-      <div className="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl border border-brand-border overflow-hidden z-10 my-8">
+      <div className="relative w-full max-w-3xl max-h-[94vh] flex flex-col bg-white rounded-2xl shadow-2xl border border-brand-border overflow-hidden z-10 my-auto sm:my-8">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2 rounded-full bg-white/80 hover:bg-brand-black hover:text-white text-brand-black transition-colors"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-30 p-2 rounded-full bg-white/90 hover:bg-brand-black hover:text-white text-brand-black transition-colors shadow-md cursor-pointer"
           aria-label="Close Checkout"
         >
           <X className="w-5 h-5" />

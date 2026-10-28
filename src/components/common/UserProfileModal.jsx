@@ -30,7 +30,7 @@ export default function UserProfileModal({ isOpen, onClose }) {
   const orders = user.orders || [];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
       {/* Backdrop */}
       <div
         onClick={onClose}
@@ -38,9 +38,9 @@ export default function UserProfileModal({ isOpen, onClose }) {
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-2xl bg-brand-black text-white rounded-2xl shadow-[0_0_50px_rgba(201,154,59,0.2)] border border-brand-gold/30 overflow-hidden z-10 my-8 animate-fadeIn">
+      <div className="relative w-full max-w-2xl max-h-[92vh] flex flex-col bg-brand-black text-white rounded-2xl shadow-[0_0_50px_rgba(201,154,59,0.2)] border border-brand-gold/30 overflow-hidden z-10 my-auto sm:my-8 animate-fadeIn">
         {/* Top Header */}
-        <div className="p-6 sm:p-8 bg-gradient-to-b from-brand-charcoal to-brand-black border-b border-brand-gold/20 flex items-center justify-between">
+        <div className="p-4 sm:p-8 bg-gradient-to-b from-brand-charcoal to-brand-black border-b border-brand-gold/20 flex items-center justify-between">
           <div className="flex items-center gap-4">
             {/* Avatar */}
             {user.avatar ? (

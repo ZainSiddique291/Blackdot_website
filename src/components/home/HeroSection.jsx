@@ -101,7 +101,7 @@ export default function HeroSection({ onShopClick }) {
             className="lg:col-span-7 xl:col-span-6 z-20 flex flex-col justify-center my-auto pt-2 lg:pt-0"
           >
             {/* 1. Main Editorial Headline with Cinematic Mask Reveal */}
-            <h1 className="font-heading text-2xl sm:text-3xl lg:text-[38px] xl:text-[44px] leading-[1.18] sm:leading-[1.2] text-[#0B0B0B] tracking-tight pb-2 overflow-visible select-none">
+            <h1 className="font-heading text-[22px] xs:text-2xl sm:text-3xl lg:text-[38px] xl:text-[44px] leading-[1.18] sm:leading-[1.2] text-[#0B0B0B] tracking-tight pb-2 overflow-visible select-none break-words">
               {/* Line 1: AMAZING BLACK DOT */}
               <span className="cinematic-mask-wrapper block">
                 <span className="cinematic-line-1">
@@ -146,12 +146,12 @@ export default function HeroSection({ onShopClick }) {
             </motion.div>
 
             {/* 5. Primary Gold CTA Button & Secondary Link */}
-            <motion.div variants={itemVariants} className="mt-3.5 sm:mt-4 flex items-center gap-3">
+            <motion.div variants={itemVariants} className="mt-3.5 sm:mt-4 flex items-center gap-2.5 sm:gap-3 flex-wrap sm:flex-nowrap">
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => addToCart(mainProduct, 1, '500ml')}
-                className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#D4A346] via-[#C99A3B] to-[#B3832B] hover:brightness-105 text-[#0B0B0B] font-bold text-xs tracking-[0.16em] uppercase px-7 py-2.5 sm:py-3 rounded-xs shadow-[0_6px_20px_rgba(201,154,59,0.3)] hover:shadow-gold-glow transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                className="group inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-[#D4A346] via-[#C99A3B] to-[#B3832B] hover:brightness-105 text-[#0B0B0B] font-bold text-xs tracking-[0.16em] uppercase px-6 sm:px-7 py-2.5 sm:py-3 rounded-xs shadow-[0_6px_20px_rgba(201,154,59,0.3)] hover:shadow-gold-glow transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer min-h-[42px]"
               >
                 <span>SHOP NOW</span>
                 <span className="text-sm transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -160,7 +160,7 @@ export default function HeroSection({ onShopClick }) {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={onShopClick}
-                className="inline-flex items-center justify-center text-xs font-semibold tracking-[0.16em] uppercase text-[#66625D] hover:text-[#0B0B0B] px-3 py-2.5 transition-colors cursor-pointer"
+                className="inline-flex items-center justify-center text-xs font-semibold tracking-[0.16em] uppercase text-[#66625D] hover:text-[#0B0B0B] px-3 py-2.5 transition-colors cursor-pointer min-h-[42px]"
               >
                 <span>Explore Rituals</span>
               </motion.button>
@@ -171,7 +171,7 @@ export default function HeroSection({ onShopClick }) {
               variants={itemVariants}
               className="mt-3.5 sm:mt-4 pt-3 border-t border-[#E5E1D8]"
             >
-              <div className="grid grid-cols-3 gap-1.5 sm:gap-3 p-2 sm:p-2.5 rounded-xl bg-white/80 backdrop-blur-md border border-[#E5E1D8] shadow-xs">
+              <div className="grid grid-cols-3 gap-1 sm:gap-3 p-1.5 sm:p-2.5 rounded-xl bg-white/80 backdrop-blur-md border border-[#E5E1D8] shadow-xs">
                 {/* Indicator 1 */}
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-[#F5EAD4] border border-[#C99A3B]/40 flex items-center justify-center flex-shrink-0 text-[#8C6219] shadow-xs">

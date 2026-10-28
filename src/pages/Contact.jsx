@@ -44,14 +44,14 @@ export default function Contact({ onNavigateHome }) {
         </div>
 
         {/* Page Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <p className="text-xs uppercase tracking-[0.25em] font-bold text-brand-gold-dark mb-2">
             WE ARE AT YOUR SERVICE
           </p>
-          <h1 className="font-heading text-4xl sm:text-5xl text-brand-black tracking-tight">
+          <h1 className="font-heading text-3xl sm:text-5xl text-brand-black tracking-tight">
             Client <span className="text-brand-gold-dark">Concierge</span>
           </h1>
-          <p className="mt-4 text-sm sm:text-base text-brand-muted leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-xs sm:text-base text-brand-muted leading-relaxed">
             Have questions regarding formulation suitability, order dispatch status, or boutique partnerships? Our dedicated hair wellness advisors are here to assist.
           </p>
         </div>
@@ -140,11 +140,11 @@ export default function Contact({ onNavigateHome }) {
           </div>
 
           {/* Right: Message Form */}
-          <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-brand-border shadow-sm">
-            <h3 className="font-heading text-2xl font-semibold text-brand-black mb-2">
+          <div className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl border border-brand-border shadow-sm">
+            <h3 className="font-heading text-xl sm:text-2xl font-semibold text-brand-black mb-2">
               Send an Advisory Inquiry
             </h3>
-            <p className="text-xs sm:text-sm text-brand-muted mb-8">
+            <p className="text-xs sm:text-sm text-brand-muted mb-6 sm:mb-8">
               Fill in your details below and a personal hair advisor will respond promptly.
             </p>
 

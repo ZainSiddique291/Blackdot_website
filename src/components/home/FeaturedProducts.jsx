@@ -38,17 +38,17 @@ export default function FeaturedProducts({ onNavigateShop }) {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto mb-12"
         >
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-brand-black tracking-tight">
+          <h2 className="font-heading text-2xl sm:text-4xl md:text-5xl text-brand-black tracking-tight">
             SIGNATURE <span className="text-brand-gold-dark italic">COLLECTION</span>
           </h2>
 
-          <p className="mt-4 text-sm sm:text-base text-brand-text max-w-xl mx-auto leading-relaxed">
+          <p className="mt-3 sm:mt-4 text-xs sm:text-base text-brand-text max-w-xl mx-auto leading-relaxed">
             Every bottle is an ode to minimalism and efficacy. Hand-blended with high-performance botanical peptides and pure botanical oils.
           </p>
         </motion.div>
 
         {/* Category Filter Pills (Without "All Products") */}
-        <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-12">
+        <div className="flex items-center justify-center gap-1.5 sm:gap-3 flex-wrap mb-8 sm:mb-12">
           {categoriesWithoutAll.map((cat) => {
             const isActive = !showAllBoutique && activeCategory === cat.id;
             return (
@@ -57,14 +57,14 @@ export default function FeaturedProducts({ onNavigateShop }) {
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.96 }}
                 onClick={() => handleCategorySelect(cat.id)}
-                className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium tracking-wider uppercase transition-all duration-300 cursor-pointer ${
+                className={`px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-sm font-medium tracking-wider uppercase transition-all duration-300 cursor-pointer ${
                   isActive
                     ? 'bg-brand-black text-brand-gold shadow-md border border-brand-gold/40 scale-102'
                     : 'bg-white text-brand-muted hover:text-brand-black border border-brand-border hover:border-brand-gold/40'
                 }`}
               >
                 <span>{cat.name}</span>
-                <span className={`ml-1.5 text-[10px] ${isActive ? 'text-brand-gold' : 'text-zinc-400'}`}>
+                <span className={`ml-1 sm:ml-1.5 text-[9.5px] sm:text-[10px] ${isActive ? 'text-brand-gold' : 'text-zinc-400'}`}>
                   ({cat.count})
                 </span>
               </motion.button>
@@ -75,7 +75,7 @@ export default function FeaturedProducts({ onNavigateShop }) {
         {/* Products Grid with smooth animation */}
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8"
+          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 lg:gap-8"
         >
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product) => (

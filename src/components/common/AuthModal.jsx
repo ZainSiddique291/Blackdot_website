@@ -135,7 +135,7 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
 
   return (
     <>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
         {/* Backdrop */}
         <div
           onClick={onClose}
@@ -143,11 +143,11 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
         />
 
         {/* Modal Window */}
-        <div className="relative w-full max-w-md bg-brand-black text-white rounded-2xl shadow-[0_0_50px_rgba(201,154,59,0.2)] border border-brand-gold/30 p-6 sm:p-8 z-10 animate-fadeIn my-8">
+        <div className="relative w-full max-w-md max-h-[92vh] overflow-y-auto bg-brand-black text-white rounded-2xl shadow-[0_0_50px_rgba(201,154,59,0.2)] border border-brand-gold/30 p-5 sm:p-8 z-10 animate-fadeIn my-auto sm:my-8">
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 text-zinc-400 hover:text-brand-gold transition-colors rounded-full hover:bg-white/5"
+            className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 text-zinc-400 hover:text-brand-gold transition-colors rounded-full hover:bg-white/5 z-20 cursor-pointer"
             aria-label="Close"
           >
             <X className="w-5 h-5" />

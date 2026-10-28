@@ -58,13 +58,14 @@ export default function Navbar({ activePage, setActivePage, onOpenSearch, onOpen
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-300 h-14 sm:h-16 flex items-center ${
+      className={`sticky top-0 z-40 transition-all duration-300 w-full ${
         isScrolled
           ? 'bg-brand-black/95 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.5)] border-b border-brand-gold/15'
           : 'bg-brand-black border-b border-white/10'
       }`}
     >
-      <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-12 w-full flex items-center justify-between">
+      <div className="h-14 sm:h-16 flex items-center">
+        <div className="max-w-site mx-auto px-4 sm:px-6 lg:px-12 w-full flex items-center justify-between">
         {/* Left: Brand Logo */}
         <button
           onClick={() => handleNavClick('home')}
@@ -220,10 +221,11 @@ export default function Navbar({ activePage, setActivePage, onOpenSearch, onOpen
           </button>
         </div>
       </div>
+      </div>
 
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-brand-black border-t border-white/10 px-6 py-6 transition-all duration-300 animate-fadeIn">
+        <div className="md:hidden bg-brand-black border-t border-white/10 px-5 sm:px-6 py-5 max-h-[calc(100dvh-3.5rem)] overflow-y-auto transition-all duration-300 animate-fadeIn">
           <nav className="flex flex-col space-y-4">
             {navLinks.map((link) => {
               const isActive = activePage === link.id;
