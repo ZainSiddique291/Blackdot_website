@@ -212,14 +212,14 @@ export default function DashboardView({ onNavigateTab, onSelectOrder }) {
       </div>
 
       {/* 4. Visualizations Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left: Revenue Velocity Chart (2 cols) */}
-        <div className="lg:col-span-2">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
+        {/* Left: Revenue Velocity Chart (7 cols) */}
+        <div className="lg:col-span-7 xl:col-span-7 min-w-0">
           <RevenueTrendChart orders={orders} />
         </div>
 
-        {/* Right: Order Status Donut Chart (1 col) */}
-        <div className="lg:col-span-1">
+        {/* Right: Order Status Donut Chart (5 cols) */}
+        <div className="lg:col-span-5 xl:col-span-5 min-w-0">
           <OrderStatusDonutChart
             statusBreakdown={statusBreakdown}
             totalOrders={totalOrdersCount}
@@ -228,9 +228,9 @@ export default function DashboardView({ onNavigateTab, onSelectOrder }) {
       </div>
 
       {/* 5. Recent Orders Table & Best Sellers Section */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Recent Orders (2 cols) */}
-        <div className="lg:col-span-2 bg-gradient-to-b from-[#181818] via-[#131313] to-[#0E0E0E] border border-white/[0.08] rounded-2xl p-5 sm:p-6 shadow-xl">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
+        {/* Recent Orders (7 cols) */}
+        <div className="lg:col-span-7 xl:col-span-7 min-w-0 bg-gradient-to-b from-[#181818] via-[#131313] to-[#0E0E0E] border border-white/[0.08] rounded-2xl p-5 sm:p-6 shadow-xl">
           <div className="flex items-center justify-between pb-4 border-b border-white/[0.06]">
             <div>
               <h3 className="text-base font-bold text-white tracking-wide font-heading">
@@ -296,8 +296,8 @@ export default function DashboardView({ onNavigateTab, onSelectOrder }) {
           </div>
         </div>
 
-        {/* Best Selling Formulations (1 col) */}
-        <div className="lg:col-span-1 bg-gradient-to-b from-[#181818] via-[#131313] to-[#0E0E0E] border border-white/[0.08] rounded-2xl p-5 sm:p-6 shadow-xl flex flex-col justify-between">
+        {/* Best Selling Formulations (5 cols) */}
+        <div className="lg:col-span-5 xl:col-span-5 min-w-0 bg-gradient-to-b from-[#181818] via-[#131313] to-[#0E0E0E] border border-white/[0.08] rounded-2xl p-5 sm:p-6 shadow-xl flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-4 border-b border-white/[0.06]">
               <div>

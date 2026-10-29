@@ -242,8 +242,8 @@ export function RevenueTrendChart({ orders = [] }) {
 export function OrderStatusDonutChart({ statusBreakdown = [], totalOrders = 0 }) {
   const [hoveredStatus, setHoveredStatus] = useState(null);
 
-  const radius = 64;
-  const strokeWidth = 14;
+  const radius = 58;
+  const strokeWidth = 12;
   const circumference = 2 * Math.PI * radius;
 
   const validStatuses = statusBreakdown.filter((s) => s.count > 0);
@@ -252,23 +252,23 @@ export function OrderStatusDonutChart({ statusBreakdown = [], totalOrders = 0 })
   let accumulatedOffset = 0;
 
   return (
-    <div className="bg-gradient-to-b from-[#181818] via-[#131313] to-[#0E0E0E] border border-white/[0.08] rounded-2xl p-5 sm:p-6 shadow-xl flex flex-col justify-between">
+    <div className="bg-gradient-to-b from-[#181818] via-[#131313] to-[#0E0E0E] border border-white/[0.08] rounded-2xl p-4 sm:p-5 xl:p-5 shadow-xl flex flex-col justify-between overflow-hidden">
       {/* Header */}
-      <div className="pb-3 border-b border-white/[0.06] flex items-center justify-between">
-        <div>
-          <h3 className="text-base font-bold text-white tracking-wide font-heading">
+      <div className="pb-3 border-b border-white/[0.06] flex items-center justify-between gap-2">
+        <div className="min-w-0">
+          <h3 className="text-base font-bold text-white tracking-wide font-heading truncate">
             Fulfillment Distribution
           </h3>
-          <p className="text-xs text-zinc-400 mt-0.5">Order pipeline statuses</p>
+          <p className="text-xs text-zinc-400 mt-0.5 truncate">Order pipeline statuses</p>
         </div>
-        <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-brand-gold">
+        <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-brand-gold flex-shrink-0">
           {totalOrders} Orders
         </span>
       </div>
 
-      <div className="my-auto py-4 flex flex-col sm:flex-row items-center justify-around gap-6">
+      <div className="my-auto py-3 sm:py-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 xl:gap-5 w-full min-w-0">
         {/* SVG Donut */}
-        <div className="relative w-44 h-44 flex items-center justify-center flex-shrink-0">
+        <div className="relative w-32 h-32 sm:w-32 sm:h-32 xl:w-34 xl:h-34 flex items-center justify-center flex-shrink-0">
           <svg className="w-full h-full -rotate-90" viewBox="0 0 160 160">
             {/* Background track */}
             <circle
@@ -309,42 +309,53 @@ export function OrderStatusDonutChart({ statusBreakdown = [], totalOrders = 0 })
           </svg>
 
           {/* Center Info */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-            <span className="text-2xl font-bold text-white">
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none px-2">
+            <span className="text-2xl font-bold text-white tracking-tight leading-none">
               {hoveredStatus ? hoveredStatus.count : totalOrders}
             </span>
-            <span className="text-[10px] uppercase tracking-wider font-semibold text-brand-gold">
+            <span className="text-[10px] uppercase tracking-wider font-semibold text-brand-gold max-w-[85px] truncate mt-1">
               {hoveredStatus ? hoveredStatus.name : 'Total Orders'}
             </span>
           </div>
         </div>
 
-        {/* Legend List */}
-        <div className="space-y-2 w-full max-w-[200px]">
+        {/* Legend List with Clean Tabular Column Alignment */}
+        <div className="space-y-1 w-full flex-1 min-w-0">
           {validStatuses.map((item, idx) => {
             const percentage = Math.round((item.count / totalCount) * 100);
+            const isHovered = hoveredStatus?.name === item.name;
+
             return (
               <div
                 key={idx}
                 onMouseEnter={() => setHoveredStatus(item)}
                 onMouseLeave={() => setHoveredStatus(null)}
-                className={`flex items-center justify-between text-xs p-1.5 rounded-lg transition-all cursor-pointer ${
-                  hoveredStatus?.name === item.name
-                    ? 'bg-white/10 text-white font-bold'
-                    : 'text-zinc-300 hover:text-white'
+                className={`grid grid-cols-[auto_1fr_auto_auto] items-center gap-x-2 px-2 py-1.5 rounded-lg transition-all cursor-pointer ${
+                  isHovered
+                    ? 'bg-white/10 text-white font-medium'
+                    : 'text-zinc-300 hover:bg-white/[0.04] hover:text-white'
                 }`}
               >
-                <div className="flex items-center gap-2">
-                  <span
-                    className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                    style={{ backgroundColor: item.color }}
-                  />
-                  <span className="truncate">{item.name}</span>
-                </div>
-                <div className="flex items-center gap-1.5 text-zinc-400 text-[11px]">
-                  <span>{item.count}</span>
-                  <span className="text-[10px] text-zinc-400">({percentage}%)</span>
-                </div>
+                {/* Status Indicator */}
+                <span
+                  className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: item.color }}
+                />
+
+                {/* Status Label */}
+                <span className="text-xs font-medium truncate pr-1">
+                  {item.name}
+                </span>
+
+                {/* Order Count */}
+                <span className="text-xs font-semibold text-zinc-100 font-mono text-right min-w-[1.25rem]">
+                  {item.count}
+                </span>
+
+                {/* Percentage */}
+                <span className="text-[11px] text-zinc-400 font-mono text-right min-w-[2.5rem]">
+                  ({percentage}%)
+                </span>
               </div>
             );
           })}
