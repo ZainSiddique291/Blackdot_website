@@ -15,10 +15,18 @@ import AdminProfileView from './pages/AdminProfileView';
 
 function AdminPortalContent({ onViewLiveStore }) {
   const { isAdminAuthenticated } = useAdminAuth();
+  // Always defaults and opens to the Admin Dashboard immediately
   const [activeTab, setActiveTab] = useState('dashboard');
 
+  // If authentication is required, display admin login first and immediately redirect
+  // to the Admin Dashboard after successful authentication
   if (!isAdminAuthenticated) {
-    return <AdminLoginView onReturnStore={onViewLiveStore} />;
+    return (
+      <AdminLoginView
+        onReturnStore={onViewLiveStore}
+        onLoginSuccess={() => setActiveTab('dashboard')}
+      />
+    );
   }
 
   return (

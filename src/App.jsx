@@ -18,26 +18,58 @@ import AdminPortal from './admin/AdminPortal';
 import { Check, Crown } from 'lucide-react';
 import './App.css';
 
+// Robust detection for admin route across paths, hashes, and parameters
+const checkIsAdminRoute = () => {
+  if (typeof window === 'undefined') return false;
+  const path = (window.location.pathname || '').toLowerCase();
+  const hash = (window.location.hash || '').toLowerCase();
+  const search = (window.location.search || '').toLowerCase();
+  return (
+    path === '/admin' ||
+    path.startsWith('/admin/') ||
+    hash === '#admin' ||
+    hash.startsWith('#admin/') ||
+    hash.startsWith('#/admin') ||
+    search.includes('admin')
+  );
+};
+
 function MainStore() {
+  // Immediately initialize to 'admin' if the admin route is accessed
   const [activePage, setActivePage] = useState(() => {
-    if (typeof window !== 'undefined' && window.location.hash.toLowerCase() === '#admin') {
+    if (checkIsAdminRoute()) {
       return 'admin';
     }
     return 'home';
   });
 
-  // Listen for hash changes like #admin or back to #home
+  // Listen for hash and history popstate changes, ensuring the admin route opens immediately
+  // and never accidentally redirects to the storefront
   React.useEffect(() => {
-    const handleHash = () => {
-      const hash = window.location.hash.toLowerCase();
-      if (hash === '#admin') {
+    const syncRoute = () => {
+      if (checkIsAdminRoute()) {
         setActivePage('admin');
-      } else if (hash === '#home' || hash === '' || hash === '#') {
-        setActivePage('home');
+      } else {
+        const hash = window.location.hash.toLowerCase();
+        if (hash === '#shop') {
+          setActivePage('shop');
+        } else if (hash === '#about') {
+          setActivePage('about');
+        } else if (hash === '#contact') {
+          setActivePage('contact');
+        } else if (hash === '#home') {
+          setActivePage('home');
+        }
       }
     };
-    window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
+
+    syncRoute();
+    window.addEventListener('hashchange', syncRoute);
+    window.addEventListener('popstate', syncRoute);
+    return () => {
+      window.removeEventListener('hashchange', syncRoute);
+      window.removeEventListener('popstate', syncRoute);
+    };
   }, []);
   const [initialShopCategory, setInitialShopCategory] = useState('all');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -86,8 +118,11 @@ function MainStore() {
     return (
       <AdminPortal
         onViewLiveStore={() => {
-          setActivePage('home');
+          if (window.location.pathname.toLowerCase().startsWith('/admin')) {
+            window.history.pushState(null, '', '/');
+          }
           window.location.hash = '';
+          setActivePage('home');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
       />
@@ -177,8 +212,8 @@ function MainStore() {
       {/* Floating Executive Admin Switcher Button */}
       <button
         onClick={() => {
+          window.location.hash = '#admin';
           setActivePage('admin');
-          window.location.hash = 'admin';
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
         className="fixed bottom-6 left-6 z-40 px-3.5 py-2 rounded-full bg-brand-black/90 hover:bg-brand-black text-brand-gold border border-brand-gold/50 shadow-2xl backdrop-blur-md text-xs font-bold tracking-wide flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer group"

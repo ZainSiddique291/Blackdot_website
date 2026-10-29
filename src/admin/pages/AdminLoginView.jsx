@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { useAdminAuth } from '../context/AdminAuthContext';
 
-export default function AdminLoginView({ onReturnStore }) {
+export default function AdminLoginView({ onReturnStore, onLoginSuccess }) {
   const { loginAdmin } = useAdminAuth();
 
   const [email, setEmail] = useState('admin@blackdot.pk');
@@ -28,13 +28,21 @@ export default function AdminLoginView({ onReturnStore }) {
     setErrorMessage('');
     setIsLoading(true);
 
-    setTimeout(async () => {
+    try {
       const res = await loginAdmin(email, password);
       setIsLoading(false);
       if (!res.success) {
         setErrorMessage(res.error || 'Invalid credentials. Please verify your email and key.');
+      } else {
+        // Immediate redirect to Admin Dashboard
+        if (onLoginSuccess) {
+          onLoginSuccess();
+        }
       }
-    }, 450);
+    } catch (err) {
+      setIsLoading(false);
+      setErrorMessage('An unexpected error occurred during authentication.');
+    }
   };
 
   const handleFillDemo = () => {
