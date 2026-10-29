@@ -4,6 +4,28 @@ import ProductCard from '../components/products/ProductCard';
 import { PRODUCTS, CATEGORIES } from '../data/products';
 
 export default function Shop({ initialCategory = 'all', onNavigateHome }) {
+  // Load dynamic catalog if modified in Admin Panel
+  const dynamicProducts = React.useMemo(() => {
+    try {
+      const saved = localStorage.getItem('blackdot_products_db');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {}
+    return PRODUCTS;
+  }, []);
+
+  const dynamicCategories = React.useMemo(() => {
+    try {
+      const saved = localStorage.getItem('blackdot_categories_db');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {}
+    return CATEGORIES;
+  }, []);
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [sortBy, setSortBy] = useState('featured');
   const [searchQuery, setSearchQuery] = useState('');
@@ -14,7 +36,7 @@ export default function Shop({ initialCategory = 'all', onNavigateHome }) {
   }, [initialCategory]);
 
   // Filter logic
-  let filtered = PRODUCTS.filter((product) => {
+  let filtered = dynamicProducts.filter((product) => {
     const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
     const matchesSearch =
       product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||

@@ -14,11 +14,31 @@ import CheckoutModal from './components/checkout/CheckoutModal';
 import SearchModal from './components/common/SearchModal';
 import AuthModal from './components/common/AuthModal';
 import UserProfileModal from './components/common/UserProfileModal';
+import AdminPortal from './admin/AdminPortal';
 import { Check, Crown } from 'lucide-react';
 import './App.css';
 
 function MainStore() {
-  const [activePage, setActivePage] = useState('home');
+  const [activePage, setActivePage] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.hash.toLowerCase() === '#admin') {
+      return 'admin';
+    }
+    return 'home';
+  });
+
+  // Listen for hash changes like #admin or back to #home
+  React.useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash === '#admin') {
+        setActivePage('admin');
+      } else if (hash === '#home' || hash === '' || hash === '#') {
+        setActivePage('home');
+      }
+    };
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
   const [initialShopCategory, setInitialShopCategory] = useState('all');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -61,6 +81,18 @@ function MainStore() {
   };
 
   const activeToast = toastMessage || authToast;
+
+  if (activePage === 'admin') {
+    return (
+      <AdminPortal
+        onViewLiveStore={() => {
+          setActivePage('home');
+          window.location.hash = '';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-brand-ivory text-brand-black selection:bg-brand-gold selection:text-brand-black">
@@ -141,6 +173,21 @@ function MainStore() {
         isOpen={isProfileModalOpen}
         onClose={closeProfileModal}
       />
+
+      {/* Floating Executive Admin Switcher Button */}
+      <button
+        onClick={() => {
+          setActivePage('admin');
+          window.location.hash = 'admin';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        className="fixed bottom-6 left-6 z-40 px-3.5 py-2 rounded-full bg-brand-black/90 hover:bg-brand-black text-brand-gold border border-brand-gold/50 shadow-2xl backdrop-blur-md text-xs font-bold tracking-wide flex items-center gap-2 transition-all duration-300 hover:scale-105 cursor-pointer group"
+        title="Access Black Dot Executive Admin Dashboard"
+      >
+        <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
+        <Crown className="w-3.5 h-3.5 text-brand-gold" />
+        <span className="text-zinc-200 group-hover:text-white">Admin Suite</span>
+      </button>
 
       {/* 6. Toast Notification */}
       {activeToast && (

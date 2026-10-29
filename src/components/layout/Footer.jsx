@@ -169,7 +169,15 @@ export default function Footer({ onNavigate }) {
 
         {/* Bottom Bar: Payment badges & Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400">
-          <p>© {new Date().getFullYear()} Black Dot Pakistan. All Rights Reserved. Crafted with luxury precision.</p>
+          <div className="flex items-center gap-4 flex-wrap">
+            <p>© {new Date().getFullYear()} Black Dot Pakistan. All Rights Reserved. Crafted with luxury precision.</p>
+            <button
+              onClick={() => onNavigate('admin')}
+              className="text-zinc-500 hover:text-brand-gold transition-colors text-[11px] underline underline-offset-4 cursor-pointer"
+            >
+              Executive Admin Portal
+            </button>
+          </div>
           
           {/* Payment Methods */}
           <div className="flex items-center gap-3 flex-wrap">

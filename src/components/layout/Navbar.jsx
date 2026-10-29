@@ -162,6 +162,17 @@ export default function Navbar({ activePage, setActivePage, onOpenSearch, onOpen
                     <span>VIP Account &amp; Orders ({user?.orders?.length || 0})</span>
                   </button>
 
+                  <button
+                    onClick={() => {
+                      setUserDropdownOpen(false);
+                      setActivePage('admin');
+                    }}
+                    className="w-full flex items-center gap-2.5 px-3 py-2 text-xs text-brand-gold hover:text-white hover:bg-white/5 rounded-lg transition-colors cursor-pointer"
+                  >
+                    <Crown className="w-4 h-4 text-brand-gold" />
+                    <span>Executive Admin Panel</span>
+                  </button>
+
                   <div className="my-1 border-t border-white/10" />
 
                   <button

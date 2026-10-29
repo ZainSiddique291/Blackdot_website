@@ -66,13 +66,43 @@ export default function CheckoutModal({ isOpen, onClose }) {
 
   const handleApplyCoupon = (e) => {
     e.preventDefault();
-    if (form.couponCode.trim().toUpperCase() === 'BLACKDOT10') {
+    const code = form.couponCode.trim().toUpperCase();
+    if (!code) return;
+
+    try {
+      const savedCoupons = localStorage.getItem('blackdot_coupons_db');
+      const couponsList = savedCoupons ? JSON.parse(savedCoupons) : null;
+      if (Array.isArray(couponsList)) {
+        const found = couponsList.find((c) => c.code.toUpperCase() === code && c.status === 'Active');
+        if (found) {
+          if (found.minOrder && subtotal < found.minOrder) {
+            setCouponError(`Minimum order amount of Rs. ${found.minOrder.toLocaleString()} required for this code.`);
+            return;
+          }
+          let discountValue = 0;
+          if (found.type === 'percentage') {
+            discountValue = Math.round((subtotal * found.value) / 100);
+            if (found.maxDiscount && discountValue > found.maxDiscount) discountValue = found.maxDiscount;
+          } else {
+            discountValue = Math.min(subtotal, found.value);
+          }
+          setDiscount(discountValue);
+          setCouponApplied(true);
+          setCouponError('');
+          return;
+        }
+      }
+    } catch (err) {
+      // fallback
+    }
+
+    if (code === 'BLACKDOT10') {
       const discountValue = Math.round(subtotal * 0.1);
       setDiscount(discountValue);
       setCouponApplied(true);
       setCouponError('');
     } else {
-      setCouponError('Invalid coupon code. Try BLACKDOT10');
+      setCouponError('Invalid or expired coupon code.');
     }
   };
 
@@ -114,6 +144,40 @@ export default function CheckoutModal({ isOpen, onClose }) {
       // Record to authenticated user's order history
       if (recordUserOrder) {
         recordUserOrder(completedOrderData);
+      }
+
+      // Record to global Admin orders database for live admin dashboard
+      try {
+        const savedOrders = localStorage.getItem('blackdot_orders_db');
+        const ordersList = savedOrders ? JSON.parse(savedOrders) : [];
+        const newOrderLog = {
+          id: orderNumber,
+          orderNumber,
+          date: new Date().toISOString().split('T')[0],
+          time: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }),
+          timestamp: new Date().toISOString(),
+          customer: {
+            fullName: form.fullName,
+            email: form.email,
+            phone: form.phone,
+            city: form.city,
+            address: form.address,
+            paymentMethod: form.paymentMethod,
+          },
+          items: [...cart],
+          subtotal,
+          shippingFee,
+          discount,
+          couponCode: couponApplied ? form.couponCode.trim().toUpperCase() : '',
+          total: calculatedTotal,
+          paymentMethod: form.paymentMethod === 'cod' ? 'Cash on Delivery' : form.paymentMethod === 'card' ? 'Debit / Credit Card' : 'Bank Transfer',
+          paymentStatus: form.paymentMethod === 'cod' ? 'Pending' : 'Paid',
+          status: 'Pending',
+          notes: 'Customer order placed online through checkout.',
+        };
+        localStorage.setItem('blackdot_orders_db', JSON.stringify([newOrderLog, ...ordersList]));
+      } catch (err) {
+        console.warn('Failed to record admin order:', err);
       }
 
       // Fire confetti celebration
