@@ -3,7 +3,7 @@ import {
   Globe,
   Save,
   RotateCcw,
-  Sparkles,
+  Layout,
   MessageSquare,
   ShieldCheck,
   Megaphone,
@@ -138,7 +138,7 @@ export default function WebsiteContentView({ onViewLiveStore }) {
       <div className="flex items-center gap-2 border-b border-white/10 pb-3 overflow-x-auto">
         {[
           { id: 'announcement', label: 'Announcement Bar', icon: Megaphone },
-          { id: 'hero', label: 'Hero Section', icon: Sparkles },
+          { id: 'hero', label: 'Hero Section', icon: Layout },
           { id: 'campaign', label: 'Campaign Promo', icon: ShieldCheck },
           { id: 'testimonials', label: 'Client Reviews', icon: MessageSquare },
         ].map((tab) => {

@@ -5,7 +5,6 @@ import {
   Shield,
   KeyRound,
   ArrowRight,
-  Sparkles,
   ExternalLink,
   Eye,
   EyeOff,

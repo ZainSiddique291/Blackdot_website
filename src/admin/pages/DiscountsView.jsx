@@ -10,7 +10,6 @@ import {
   Trash2,
   Copy,
   Clock,
-  Sparkles,
   ShoppingBag,
 } from 'lucide-react';
 import { useAdminData } from '../context/AdminDataContext';
@@ -85,7 +84,6 @@ export default function DiscountsView() {
       <div className="p-6 rounded-2xl bg-gradient-to-r from-[#171717] via-[#121212] to-[#0A0A0A] border border-white/[0.08] shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand-gold mb-1">
-            <Sparkles className="w-3.5 h-3.5" />
             <span>Black Dot Promotional Engine</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold font-heading text-white tracking-wide">

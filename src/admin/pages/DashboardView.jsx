@@ -12,7 +12,6 @@ import {
   ChevronRight,
   Eye,
   Calendar,
-  Sparkles,
   ExternalLink,
 } from 'lucide-react';
 import StatCard from '../components/StatCard';
@@ -64,7 +63,6 @@ export default function DashboardView({ onNavigateTab, onSelectOrder }) {
 
         <div>
           <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand-gold mb-1">
-            <Sparkles className="w-3.5 h-3.5" />
             <span>Black Dot Sovereign Commerce</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-bold font-heading text-white tracking-wide">

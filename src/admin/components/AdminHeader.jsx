@@ -75,7 +75,7 @@ export default function AdminHeader({
             {currentTitle}
           </h1>
           <p className="text-[10px] text-zinc-400 uppercase tracking-widest hidden sm:block">
-            Black Dot Flagship • Verified Enterprise Portal
+            Black Dot Flagship • Infinite Vision
           </p>
         </div>
       </div>

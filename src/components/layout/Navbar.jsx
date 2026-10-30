@@ -165,7 +165,12 @@ export default function Navbar({ activePage, setActivePage, onOpenSearch, onOpen
                   <button
                     onClick={() => {
                       setUserDropdownOpen(false);
+                      try {
+                        window.history.pushState(null, '', '/admin');
+                      } catch {}
+                      window.location.hash = '';
                       setActivePage('admin');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
                     className="w-full flex items-center gap-2.5 px-3 py-2 text-xs text-brand-gold hover:text-white hover:bg-white/5 rounded-lg transition-colors cursor-pointer"
                   >

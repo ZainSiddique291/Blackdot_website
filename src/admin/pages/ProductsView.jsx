@@ -6,7 +6,7 @@ import {
   Filter,
   Edit,
   Trash2,
-  Sparkles,
+  Star,
   Flame,
   Check,
   X,
@@ -351,7 +351,7 @@ export default function ProductsView() {
                               : 'bg-white/5 text-zinc-500 border-white/5 hover:text-white')}
                           title="Toggle Featured Catalog"
                         >
-                          <Sparkles className="w-3.5 h-3.5" />
+                          <Star className="w-3.5 h-3.5" />
                         </button>
                       </td>
 

@@ -18,48 +18,119 @@ import AdminPortal from './admin/AdminPortal';
 import { Check, Crown } from 'lucide-react';
 import './App.css';
 
-// Robust detection for admin route across paths, hashes, and parameters
-const checkIsAdminRoute = () => {
+// Robust check for whether the current URL represents a dedicated customer store route
+const isCustomerStoreRoute = () => {
   if (typeof window === 'undefined') return false;
-  const path = (window.location.pathname || '').toLowerCase();
+  const path = (window.location.pathname || '').toLowerCase().replace(/\/+$/, '');
   const hash = (window.location.hash || '').toLowerCase();
   const search = (window.location.search || '').toLowerCase();
-  return (
+
+  // If URL explicitly targets admin, it is NOT customer store
+  if (
     path === '/admin' ||
     path.startsWith('/admin/') ||
     hash === '#admin' ||
     hash.startsWith('#admin/') ||
     hash.startsWith('#/admin') ||
     search.includes('admin')
-  );
+  ) {
+    return false;
+  }
+
+  // Dedicated customer-facing routes: /store, /shop, /about, /contact, or corresponding hashes
+  if (
+    path === '/store' ||
+    path.startsWith('/store/') ||
+    path === '/shop' ||
+    path === '/about' ||
+    path === '/contact' ||
+    path === '/home' ||
+    hash === '#store' ||
+    hash === '#shop' ||
+    hash === '#about' ||
+    hash === '#contact' ||
+    hash === '#home' ||
+    search.includes('store')
+  ) {
+    return true;
+  }
+
+  // Default: root route ('/' or empty) and any unknown path belongs to the Admin Panel landing
+  return false;
+};
+
+// Initial page state: defaults to 'admin' unless explicitly accessing dedicated store routes
+const getInitialActivePage = () => {
+  if (typeof window === 'undefined') return 'admin';
+  const path = (window.location.pathname || '').toLowerCase().replace(/\/+$/, '');
+  const hash = (window.location.hash || '').toLowerCase();
+
+  if (isCustomerStoreRoute()) {
+    if (path === '/shop' || hash === '#shop') return 'shop';
+    if (path === '/about' || hash === '#about') return 'about';
+    if (path === '/contact' || hash === '#contact') return 'contact';
+    return 'home';
+  }
+
+  // Root route '/' automatically redirects to '/admin'
+  if (path === '' || path === '/') {
+    try {
+      window.history.replaceState(null, '', '/admin');
+    } catch {
+      // Safe fallback if history API is restricted
+    }
+  }
+
+  return 'admin';
 };
 
 function MainStore() {
-  // Immediately initialize to 'admin' if the admin route is accessed
-  const [activePage, setActivePage] = useState(() => {
-    if (checkIsAdminRoute()) {
-      return 'admin';
-    }
-    return 'home';
-  });
+  // Defaults to 'admin' so the Admin Panel is the default landing page across localhost and Vercel
+  const [activePage, setActivePage] = useState(getInitialActivePage);
 
-  // Listen for hash and history popstate changes, ensuring the admin route opens immediately
-  // and never accidentally redirects to the storefront
+  // Sync route on mount, hash changes, and history popstate
   React.useEffect(() => {
     const syncRoute = () => {
-      if (checkIsAdminRoute()) {
+      const path = (window.location.pathname || '').toLowerCase().replace(/\/+$/, '');
+      const hash = (window.location.hash || '').toLowerCase();
+
+      // Explicit Admin route
+      if (
+        path === '/admin' ||
+        path.startsWith('/admin/') ||
+        hash === '#admin' ||
+        hash.startsWith('#admin/') ||
+        hash.startsWith('#/admin') ||
+        window.location.search.toLowerCase().includes('admin')
+      ) {
         setActivePage('admin');
+        return;
+      }
+
+      // Root route '/' automatically redirects to /admin
+      if (path === '' || path === '/') {
+        try {
+          window.history.replaceState(null, '', '/admin');
+        } catch {}
+        setActivePage('admin');
+        return;
+      }
+
+      // Dedicated Customer Store routes
+      if (path === '/shop' || hash === '#shop') {
+        setActivePage('shop');
+      } else if (path === '/about' || hash === '#about') {
+        setActivePage('about');
+      } else if (path === '/contact' || hash === '#contact') {
+        setActivePage('contact');
+      } else if (path === '/store' || path === '/home' || hash === '#store' || hash === '#home') {
+        setActivePage('home');
       } else {
-        const hash = window.location.hash.toLowerCase();
-        if (hash === '#shop') {
-          setActivePage('shop');
-        } else if (hash === '#about') {
-          setActivePage('about');
-        } else if (hash === '#contact') {
-          setActivePage('contact');
-        } else if (hash === '#home') {
-          setActivePage('home');
-        }
+        // Any unknown path defaults to admin panel
+        try {
+          window.history.replaceState(null, '', '/admin');
+        } catch {}
+        setActivePage('admin');
       }
     };
 
@@ -71,6 +142,7 @@ function MainStore() {
       window.removeEventListener('popstate', syncRoute);
     };
   }, []);
+
   const [initialShopCategory, setInitialShopCategory] = useState('all');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
@@ -114,13 +186,14 @@ function MainStore() {
 
   const activeToast = toastMessage || authToast;
 
+  // Admin Portal landing
   if (activePage === 'admin') {
     return (
       <AdminPortal
         onViewLiveStore={() => {
-          if (window.location.pathname.toLowerCase().startsWith('/admin')) {
-            window.history.pushState(null, '', '/');
-          }
+          try {
+            window.history.pushState(null, '', '/store');
+          } catch {}
           window.location.hash = '';
           setActivePage('home');
           window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -212,7 +285,10 @@ function MainStore() {
       {/* Floating Executive Admin Switcher Button */}
       <button
         onClick={() => {
-          window.location.hash = '#admin';
+          try {
+            window.history.pushState(null, '', '/admin');
+          } catch {}
+          window.location.hash = '';
           setActivePage('admin');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
